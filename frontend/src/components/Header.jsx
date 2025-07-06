@@ -1,27 +1,30 @@
 import { Link } from "react-router-dom";
+import LoginButton from "./LoginButton"; // adjust your path if needed
 
 function Header() {
   return (
     <header
       style={{
         backgroundColor: "black",
-        overflow: "hidden",
-        marginTop: "-40px",
-        marginBottom: "-10px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: "0 30px",
         height: "105px",
       }}
     >
-      <Link to="/">
-        <div style={{ padding: "0" }}>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <div style={{ lineHeight: "1", marginLeft: "30px" }}>
           <p
             style={{
               fontFamily: '"Merriweather", serif',
               fontSize: "36px",
               color: "#FF0000",
-              paddingLeft: "35px",
               fontStyle: "italic",
               fontWeight: "bolder",
-              textShadow: "2px 2px 0 rgba(255,255,255,1)",
+              textShadow: "1.5px 1.5px 0 rgba(255,255,255,1)",
+              left: "60px",
+              margin: 0,
             }}
           >
             J&amp;A
@@ -32,10 +35,9 @@ function Header() {
               fontSize: "18px",
               color: "#FF0000",
               fontStyle: "italic",
-              paddingLeft: "10px",
-              marginTop: "-40px",
               fontWeight: "bolder",
-              textShadow: "2px 2px 0 rgba(255,255,255,1)",
+              textShadow: ".5px .5px 0 rgba(255,255,255,1)",
+              margin: 0,
             }}
           >
             CAR RENTAL

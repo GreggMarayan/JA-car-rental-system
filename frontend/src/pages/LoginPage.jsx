@@ -15,7 +15,7 @@ function LoginPage() {
   const [password, setPassword] = useState("");
   const [showPwd, setShowPwd] = useState(false);
 
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   return (
     <>
@@ -47,7 +47,7 @@ function LoginPage() {
         >
           <img
             src="https://www.gravatar.com/avatar/?d=mp"
-            alt="Default Avatar"
+            alt=""
             style={{
               width: "150px",
               height: "150px",
@@ -60,6 +60,7 @@ function LoginPage() {
             style={{
               fontSize: "36px",
               marginTop: "0",
+              fontWeight: "bold",
             }}
           >
             LOGIN
@@ -138,10 +139,12 @@ function LoginPage() {
               fontSize: "18px",
               border: "none",
               borderRadius: "5px",
-              padding: "10px",
-              width: "320px",
+              padding: "5px",
+              width: "300px",
               marginBottom: "10px",
               boxShadow: "0 2px 2px rgba(0, 0, 0, .7)",
+              color: "white",
+              cursor: "pointer",
             }}
           >
             Login
@@ -179,7 +182,7 @@ function LoginPage() {
                 border: "none",
                 borderRadius: "5px",
                 padding: "10px",
-                width: "320px",
+                width: "300px",
                 marginBottom: "30px",
                 boxShadow: "0 2px 2px rgba(0, 0, 0, .7)",
               }}
@@ -203,8 +206,8 @@ function LoginPage() {
               className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95"
             >
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div className="sm:flex sm:items-start">
-                  <div className="mx-auto flex size-12 shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:size-10">
+                <div className="flex flex-col items-center text-center">
+                  <div className="flex items-center justify-center size-12 rounded-full bg-red-100 mb-4">
                     <ExclamationTriangleIcon
                       aria-hidden="true"
                       className="size-6 text-red-600"
@@ -213,25 +216,26 @@ function LoginPage() {
                   <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                     <DialogTitle
                       as="h3"
-                      className="text-base font-semibold text-gray-900"
+                      className="text-center font-semibold text-gray-900"
                     >
-                      Deactivate account
+                      Forgot Password?
                     </DialogTitle>
                     <div className="mt-2">
-                      <p className="text-sm text-gray-500">
-                        Are you sure you want to deactivate your account? All of
-                        your data will be permanently removed. This action
-                        cannot be undone.
-                      </p>
+                      <p className="text-sm text-gray-500 mt-2"></p>
+                      <input
+                        type="email"
+                        placeholder="Enter your email address"
+                        className="mt-4 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 p-2"
+                      />
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+              <div className="bg-gray-50 px-4 py-3 flex flex-col items-center text-center">
                 <button
                   type="button"
                   onClick={() => setOpen(false)}
-                  className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-red-500 sm:ml-3 sm:w-auto"
+                  className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-green-600 sm:ml-3 sm:w-auto"
                 >
                   Send Code
                 </button>
