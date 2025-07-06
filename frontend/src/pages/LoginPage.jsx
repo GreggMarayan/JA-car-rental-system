@@ -190,11 +190,6 @@ function LoginPage() {
         </div>
       </div>
 
-      {/*  */}
-      {/*  */}
-      {/*  */}
-      {/*  */}
-
       <Dialog open={open} onClose={setOpen} className="relative z-10">
         <DialogBackdrop
           transition
