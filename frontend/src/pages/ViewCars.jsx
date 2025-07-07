@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function RegisterNextPage() {
+export default function ViewCarsPage() {
   return (
     <>
-      Register Next Page
+      View Cars Page
       <Link to={"/terms-and-conditions"}>Term and Condition</Link>
     </>
   );

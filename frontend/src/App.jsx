@@ -1,12 +1,14 @@
 import "./styles/index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "react-icons/fa";
 // import "tailwindcss";
 
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import BookNowPage from "./pages/BookNowPage";
 import RegisterPage from "./pages/RegisterPage";
-import RegisterNextPage from "./pages/RegisterNextPage";
+import ResetPassword from "./pages/ResetPassword";
+//import ViewCarsPage from "./pages/ViewCars";
 import TermsAndConditions from "./pages/TermsAndConditions";
 // import AdminDashboard from "./pages/admin/adminDashboard";
 // import CustomerDashboard from "./pages/customer/customerDashboard";
@@ -20,7 +22,7 @@ function App() {
           <Route path="/book-now" element={<BookNowPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/register-next" element={<RegisterNextPage />} />
+          <Route path="/reset-password" element={<ResetPassword />} />
           <Route
             path="/terms-and-conditions"
             element={<TermsAndConditions />}

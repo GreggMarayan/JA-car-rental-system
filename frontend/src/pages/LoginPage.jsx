@@ -232,13 +232,15 @@ function LoginPage() {
                 </div>
               </div>
               <div className="bg-gray-50 px-4 py-3 flex flex-col items-center text-center">
-                <button
-                  type="button"
-                  onClick={() => setOpen(false)}
-                  className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-green-600 sm:ml-3 sm:w-auto"
-                >
-                  Send Code
-                </button>
+                <Link to="/reset-password">
+                  <button
+                    type="button"
+                    onClick={() => setOpen(false)}
+                    className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-green-600 sm:ml-3 sm:w-auto"
+                  >
+                    Send Code
+                  </button>
+                </Link>
               </div>
             </DialogPanel>
           </div>
