@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import Header from "../components/Header";
 import carImage from "/carImage.png";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 import {
   Dialog,
   DialogBackdrop,
@@ -12,10 +11,45 @@ import {
 import { ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
 function LoginPage() {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPwd, setShowPwd] = useState(false);
-
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState("");
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    if (!username || !password) {
+      alert("Please enter your username and password.");
+      return;
+    }
+
+    // BackEnd/Check ()
+    const validUsername = "admin";
+    const validPassword = "admin123";
+
+    if (username === validUsername && password === validPassword) {
+      alert("Login successful!");
+      navigate("/dashboard"); // edit to actual dashboard route
+    } else {
+      alert("Login failed. Make sure your username and password are correct.");
+    }
+  };
+
+  const handleForgotPasswordSubmit = (e) => {
+    e.preventDefault();
+    if (email.trim() === "") {
+      alert("Please enter your email address.");
+      return;
+    }
+    // Optional Send code logic
+
+    alert("Password reset instructions sent to your email.");
+    setOpen(false);
+    navigate("/reset-password");
+  };
 
   return (
     <>
@@ -32,58 +66,60 @@ function LoginPage() {
           textAlign: "center",
         }}
       >
-        <div
-          style={{
-            backgroundColor: "#f2f2f2",
-            borderRadius: "5px",
-            padding: "20px",
-            width: "360px",
-            height: "390px",
-            marginTop: "60px",
-            placeContent: "center",
-            justifyItems: "center",
-            boxShadow: "0 2px 2px rgba(0, 0, 0, .7)",
-          }}
-        >
-          <img
-            src="https://www.gravatar.com/avatar/?d=mp"
-            alt=""
+        <form onSubmit={handleLogin}>
+          <div
             style={{
-              width: "150px",
-              height: "150px",
-              borderRadius: "50%",
-              marginTop: "-100px",
-            }}
-          />
-          <h2
-            className="font-pathway"
-            style={{
-              fontSize: "36px",
-              marginTop: "0",
-              fontWeight: "bold",
-            }}
-          >
-            LOGIN
-          </h2>
-          <input
-            type="text"
-            id="username"
-            placeholder="Username"
-            style={{
-              backgroundColor: "#D9D9D9",
-              fontFamily: '"Pathway Gothic One", sans-serif',
-              fontSize: "18px",
-              textAlign: "center",
-              border: "none",
+              backgroundColor: "#f2f2f2",
               borderRadius: "5px",
-              padding: "10px",
-              width: "300px",
-              marginBottom: "10px",
+              padding: "20px",
+              width: "360px",
+              height: "390px",
+              marginTop: "60px",
+              placeContent: "center",
+              justifyItems: "center",
               boxShadow: "0 2px 2px rgba(0, 0, 0, .7)",
             }}
-          />
-          <br />
-          <div style={{ position: "relative", display: "inline-block" }}>
+          >
+            <img
+              src="https://www.gravatar.com/avatar/?d=mp"
+              alt=""
+              style={{
+                width: "150px",
+                height: "150px",
+                borderRadius: "50%",
+                marginTop: "-100px",
+              }}
+            />
+            <h2
+              className="font-pathway"
+              style={{
+                fontSize: "36px",
+                marginTop: "0",
+                fontWeight: "bold",
+              }}
+            >
+              LOGIN
+            </h2>
+            <input
+              type="text"
+              id="username"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              style={{
+                backgroundColor: "#D9D9D9",
+                fontFamily: '"Pathway Gothic One", sans-serif',
+                fontSize: "18px",
+                textAlign: "center",
+                border: "none",
+                borderRadius: "5px",
+                padding: "10px",
+                width: "300px",
+                marginBottom: "10px",
+                boxShadow: "0 2px 2px rgba(0, 0, 0, .7)",
+              }}
+            />
+            <br />
             <input
               type={showPwd ? "text" : "password"}
               id="password"
@@ -103,145 +139,116 @@ function LoginPage() {
                 boxShadow: "0 2px 2px rgba(0, 0, 0, .7)",
               }}
             />
-            {password && (
-              <button
-                type="button"
-                onClick={() => setShowPwd(!showPwd)}
-                style={{
-                  position: "absolute",
-                  right: "5px",
-                  top: "23px",
-                  transform: "translateY(-50%)",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  zIndex: 100,
-                }}
-              >
-                {showPwd ? (
-                  <EyeSlashSolid
-                    style={{ width: 18, height: 18, color: "rgb(0 0 0 / .7)" }}
-                  />
-                ) : (
-                  <EyeSolid
-                    style={{ width: 18, height: 18, color: "rgb(0 0 0 / .7)" }}
-                  />
-                )}
-              </button>
-            )}
-          </div>
-          <br />
-          <button
-            id="login"
-            style={{
-              backgroundColor: "#3F86F1",
-              fontFamily: '"Pathway Gothic One", sans-serif',
-              fontSize: "18px",
-              border: "none",
-              borderRadius: "5px",
-              padding: "5px",
-              width: "300px",
-              marginBottom: "10px",
-              boxShadow: "0 2px 2px rgba(0, 0, 0, .7)",
-              color: "white",
-              cursor: "pointer",
-            }}
-          >
-            Login
-          </button>
-          <br />
-          <a
-            href="#"
-            style={{
-              fontFamily: '"Pathway Gothic One", sans-serif',
-              textDecoration: "none",
-              color: "rgb(0 0 0 / .7)",
-            }}
-            onClick={() => {
-              setOpen(true);
-            }}
-          >
-            Forgot your password?
-          </a>
-          <br />
-          <p
-            style={{
-              fontFamily: '"Pathway Gothic One", sans-serif',
-              color: "rgb(0 0 0 / .7)",
-            }}
-          >
-            OR
-          </p>
-          <Link to="/register">
+            <br />
             <button
-              id="createAccount"
+              type="submit"
+              id="login"
               style={{
-                backgroundColor: "#F13F3F",
+                backgroundColor: "#3F86F1",
                 fontFamily: '"Pathway Gothic One", sans-serif',
                 fontSize: "18px",
                 border: "none",
                 borderRadius: "5px",
-                padding: "10px",
+                padding: "5px",
                 width: "300px",
-                marginBottom: "30px",
+                marginBottom: "10px",
                 boxShadow: "0 2px 2px rgba(0, 0, 0, .7)",
+                color: "white",
+                cursor: "pointer",
               }}
             >
-              Create an Account
+              Login
             </button>
-          </Link>
-        </div>
+            <br />
+            <a
+              href="#"
+              style={{
+                fontFamily: '"Pathway Gothic One", sans-serif',
+                textDecoration: "none",
+                color: "rgb(0 0 0 / .7)",
+              }}
+              onClick={() => {
+                setOpen(true);
+              }}
+            >
+              Forgot your password?
+            </a>
+            <br />
+            <p
+              style={{
+                fontFamily: '"Pathway Gothic One", sans-serif',
+                color: "rgb(0 0 0 / .7)",
+              }}
+            >
+              OR
+            </p>
+            <Link to="/register">
+              <button
+                id="createAccount"
+                style={{
+                  backgroundColor: "#F13F3F",
+                  fontFamily: '"Pathway Gothic One", sans-serif',
+                  fontSize: "18px",
+                  border: "none",
+                  borderRadius: "5px",
+                  padding: "10px",
+                  width: "300px",
+                  marginBottom: "30px",
+                  boxShadow: "0 2px 2px rgba(0, 0, 0, .7)",
+                }}
+              >
+                Create an Account
+              </button>
+            </Link>
+          </div>
+        </form>
       </div>
 
+      {/* Start of Forgot Password Modal */}
       <Dialog open={open} onClose={setOpen} className="relative z-10">
-        <DialogBackdrop
-          transition
-          className="fixed inset-0 bg-gray-500/75 transition-opacity data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
-        />
-
+        <DialogBackdrop className="fixed inset-0 bg-gray-500/75" />
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
           <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-            <DialogPanel
-              transition
-              className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95"
-            >
-              <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div className="flex flex-col items-center text-center">
-                  <div className="flex items-center justify-center size-12 rounded-full bg-red-100 mb-4">
-                    <ExclamationTriangleIcon
-                      aria-hidden="true"
-                      className="size-6 text-red-600"
-                    />
-                  </div>
-                  <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-                    <DialogTitle
-                      as="h3"
-                      className="text-center font-semibold text-gray-900"
-                    >
-                      Forgot Password?
-                    </DialogTitle>
-                    <div className="mt-2">
-                      <p className="text-sm text-gray-500 mt-2"></p>
-                      <input
-                        type="email"
-                        placeholder="Enter your email address"
-                        className="mt-4 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 p-2"
+            <DialogPanel className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
+              <form onSubmit={handleForgotPasswordSubmit}>
+                <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="flex items-center justify-center size-12 rounded-full bg-red-100 mb-4">
+                      <ExclamationTriangleIcon
+                        aria-hidden="true"
+                        className="size-6 text-red-600"
                       />
+                    </div>
+                    <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
+                      <DialogTitle
+                        as="h3"
+                        className="text-center font-semibold text-gray-900"
+                      >
+                        Forgot Password?
+                      </DialogTitle>
+                      <div className="mt-2">
+                        <input
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          required
+                          placeholder="Enter your email address"
+                          className="mt-4 w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 p-2"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div className="bg-gray-50 px-4 py-3 flex flex-col items-center text-center">
-                <Link to="/reset-password">
+
+                <div className="bg-gray-50 px-4 py-3 flex flex-col items-center text-center">
                   <button
-                    type="button"
-                    onClick={() => setOpen(false)}
+                    type="submit"
                     className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-green-600 sm:ml-3 sm:w-auto"
                   >
                     Send Code
                   </button>
-                </Link>
-              </div>
+                </div>
+              </form>
             </DialogPanel>
           </div>
         </div>
