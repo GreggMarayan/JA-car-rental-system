@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import LoginButton from "../components/LoginButton";
+import CarList from "../components/CarList";
 
 const cars = [
   {
@@ -11,7 +12,7 @@ const cars = [
     engine: "Diesel Engine",
     type: "Pick Up",
     status: "Available",
-    img: "https://link-to-your-nissan-navarra-image.png",
+    img: "/Navarra.png",
   },
   {
     id: 2,
@@ -20,7 +21,7 @@ const cars = [
     engine: "Gasoline Engine",
     type: "SUV",
     status: "Available",
-    img: "https://link-to-your-toyota-avanza-image.png",
+    img: "/avanza.png",
   },
   {
     id: 3,
@@ -29,7 +30,7 @@ const cars = [
     engine: "Gasoline Engine",
     type: "Sedan",
     status: "Available",
-    img: "https://link-to-your-kia-rio-image.png",
+    img: "/kia.png",
   },
   {
     id: 4,
@@ -38,7 +39,7 @@ const cars = [
     engine: "Diesel Engine",
     type: "SUV",
     status: "Available",
-    img: "https://link-to-your-nissan-terra-image.png",
+    img: "/terra.png",
   },
   {
     id: 5,
@@ -47,7 +48,16 @@ const cars = [
     engine: "Gasoline Engine",
     type: "Sedan",
     status: "Available",
-    img: "https://link-to-your-mirage-image.png",
+    img: "/mirage.png",
+  },
+  {
+    id: 6,
+    name: "Toyota Hilux 2022",
+    seats: "5 Seater",
+    engine: "Diesel Engine",
+    type: "Pick Up",
+    status: "Available",
+    img: "/hilux.png",
   },
 ];
 
@@ -55,7 +65,7 @@ function BookNowPage() {
   const navigate = useNavigate();
 
   const handleBookNow = () => {
-    navigate("/login"); // redirect to login if not logged in
+    navigate("/login");
   };
 
   return (
@@ -66,32 +76,10 @@ function BookNowPage() {
       </div>
 
       <main className="px-8 py-12">
-        <h1 className="text-4xl font-bold mb-8">VIEW CARS</h1>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {cars.map((car) => (
-            <div
-              key={car.id}
-              className="text-center bg-white p-4 rounded shadow hover:shadow-md transition"
-            >
-              <img
-                src={car.img}
-                alt={car.name}
-                className="w-full h-48 object-contain mb-4"
-              />
-              <p className="font-semibold">{car.name}</p>
-              <p>{car.seats}</p>
-              <p>{car.engine}</p>
-              <p>{car.type}</p>
-              <p className="text-green-600">{car.status}</p>
-              <button
-                onClick={handleBookNow}
-                className="mt-2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
-              >
-                Book Now
-              </button>
-            </div>
-          ))}
-        </div>
+        <h1 className="text-4xl font-bold mb-8 flex justify-center italic">
+          J&A CARS
+        </h1>
+        <CarList cars={cars} onBookNow={handleBookNow} />
       </main>
     </div>
   );

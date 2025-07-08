@@ -1,15 +1,12 @@
 import "./styles/index.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "react-icons/fa";
-// import "tailwindcss";
 
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import BookNowPage from "./pages/BookNowPage";
 import RegisterPage from "./pages/RegisterPage";
 import ResetPassword from "./pages/ResetPassword";
-//import ViewCarsPage from "./pages/ViewCars";
-import TermsAndConditions from "./pages/TermsAndConditions";
 // import AdminDashboard from "./pages/admin/adminDashboard";
 // import CustomerDashboard from "./pages/customer/customerDashboard";
 

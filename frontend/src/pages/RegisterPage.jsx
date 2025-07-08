@@ -21,7 +21,8 @@ export default function RegisterPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // validate & save data here
-    navigate("/register-next");
+    alert("Account Created Successfully. You can now log in.");
+    navigate("/login");
   };
 
   return (
