@@ -32,7 +32,7 @@ function LoginPage() {
 
     if (username === validUsername && password === validPassword) {
       alert("Login successful!");
-      navigate("/dashboard"); // edit to actual dashboard route
+      navigate("/customer-dashboard");
     } else {
       alert("Login failed. Make sure your username and password are correct.");
     }
@@ -70,7 +70,7 @@ function LoginPage() {
           <div
             style={{
               backgroundColor: "#f2f2f2",
-              borderRadius: "5px",
+              borderRadius: "10px",
               padding: "20px",
               width: "360px",
               height: "390px",

@@ -14,7 +14,10 @@ function CarCard({ car, onBookNow }) {
       <p>{car.type}</p>
       <p className="text-green-600">{car.status}</p>
       <button
-        onClick={onBookNow}
+        onClick={() => {
+          alert("You must login first!");
+          onBookNow();
+        }}
         className="mt-2 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition"
       >
         Book Now →
