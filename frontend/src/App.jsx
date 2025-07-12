@@ -7,8 +7,14 @@ import HomePage from "./pages/HomePage";
 import BookNowPage from "./pages/BookNowPage";
 import RegisterPage from "./pages/RegisterPage";
 import ResetPassword from "./pages/ResetPassword";
-// import AdminDashboard from "./pages/admin/adminDashboard";
-import CustomerDashboard from "./pages/customer/customerDashboard";
+import CustomerDashboard from "./pages/customer/CustomerDashboard";
+import AccountSettings from "./pages/customer/AccountSettings";
+import BookingHistory from "./pages/customer/BookingHistory";
+import Cars from "./pages/customer/Cars";
+import MyBookings from "./pages/customer/MyBookings";
+import MyProfile from "./pages/customer/MyProfile";
+import Schedule from "./pages/customer/Schedule";
+import Logout from "./pages/customer/Logout";
 
 function App() {
   return (
@@ -21,6 +27,13 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/customer-dashboard" element={<CustomerDashboard />} />
+          <Route path="/my-bookings" element={<MyBookings />} />
+          <Route path="/my-profile" element={<MyProfile />} />
+          <Route path="/account-settings" element={<AccountSettings />} />
+          <Route path="/booking-history" element={<BookingHistory />} />
+          <Route path="/cars" element={<Cars />} />
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/logout" element={<Logout />} />
         </Routes>
       </BrowserRouter>
     </div>
