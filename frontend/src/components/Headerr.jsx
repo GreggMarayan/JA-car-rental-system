@@ -6,11 +6,11 @@ function Header() {
   const user = {
     name: "Jude Christian Amoguis",
     email: "juan@example.com",
-    photo: "/frontend/public/jude.jpg", // user profile picture
+    photo: "/jude.jpg", // user profile picture
   };
 
   let displayName = "Guest";
-  let userPhoto = "/frontend/public/jude.jpg"; // fallback icon
+  let userPhoto = "/jude.jpg"; // fallback icon
 
   if (user) {
     displayName = user.name || user.email || "Guest";
@@ -68,12 +68,12 @@ function Header() {
           display: "flex",
           alignItems: "center",
           gap: "10px",
-          color: "rgba(220,38,38,1)",
+          color: "white",
           fontFamily: '"Merriweather", serif',
           fontSize: "15px",
           fontWeight: "bold",
           fontStyle: "italic",
-          textShadow: ".1px .1px 0 rgba(255,255,255,1)",
+          textShadow: "2px 2px 0 gray)",
         }}
       >
         {/* User Profile Picture */}

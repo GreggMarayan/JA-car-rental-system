@@ -25,10 +25,11 @@ function CarCard({ car, onBookNow }) {
         alt={car.name}
         className="w-full h-48 object-contain mb-4 hover:scale-105 transition-transform"
       />
-      <p className="font-semibold">{car.name}</p>
+      <p className="font-semibold text-center">{car.name}</p>
       <p>{car.seats}</p>
       <p>{car.engine}</p>
       <p>{car.type}</p>
+      <p>{car.rates}</p>
       <p className={`font-bold ${getStatusColor(car.status)}`}>{car.status}</p>
       <button
         onClick={handleBookNow}
