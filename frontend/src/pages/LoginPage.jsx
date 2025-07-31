@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import Header from "../components/Header";
 import carImage from "/carImage.png";
 import {
@@ -7,8 +9,44 @@ import {
 } from "@heroicons/react/24/solid";
 
 function LoginPage() {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPwd, setShowPwd] = useState(false);
+  const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    setError("");
+    
+    // Basic validation
+    if (!username.trim() || !password) {
+      setError("Please enter both username and password");
+      return;
+    }
+
+    setIsLoading(true);
+
+    try {
+      const response = await axios.post("http://localhost:4000/api/auth/login", {
+        username: username.trim(),
+        password,
+      });
+
+      // Save user data to localStorage
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+
+      // Redirect to dashboard or home page
+      navigate("/dashboard");
+    } catch (err) {
+      setError("Invalid username or password");
+      console.error("Login error:", err);
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <>
       <Header />
@@ -25,6 +63,7 @@ function LoginPage() {
           textAlign: "center",
         }}
       >
+        <form onSubmit={handleLogin}>
         <div
           style={{
             backgroundColor: "#f2f2f2",
@@ -57,21 +96,38 @@ function LoginPage() {
           >
             LOGIN
           </h2>
+          
+          {error && (
+            <div style={{
+              color: "#f13f3f",
+              backgroundColor: "#ffebee",
+              padding: "10px",
+              borderRadius: "5px",
+              margin: "10px 0",
+              fontSize: "16px"
+            }}>
+              {error}
+            </div>
+          )}
           <input
             type="text"
             id="username"
             placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            disabled={isLoading}
             style={{
               backgroundColor: "#D9D9D9",
               fontFamily: '"Pathway Gothic One", sans-serif',
               fontSize: "18px",
               textAlign: "center",
-              border: "none",
+              border: error ? "1px solid #f13f3f" : "none",
               borderRadius: "5px",
               padding: "10px",
               width: "300px",
               marginBottom: "10px",
               boxShadow: "0 2px 2px rgba(0, 0, 0, .7)",
+              opacity: isLoading ? 0.7 : 1,
             }}
           />
           <br />
@@ -82,12 +138,13 @@ function LoginPage() {
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              disabled={isLoading}
               style={{
                 backgroundColor: "#D9D9D9",
                 fontFamily: '"Pathway Gothic One", sans-serif',
                 fontSize: "18px",
                 textAlign: "center",
-                border: "none",
+                border: error ? "1px solid #f13f3f" : "none",
                 borderRadius: "5px",
                 padding: "10px",
                 width: "300px",
@@ -124,7 +181,9 @@ function LoginPage() {
           </div>
           <br />
           <button
+            type="submit"
             id="login"
+            disabled={isLoading}
             style={{
               backgroundColor: "#3F86F1",
               fontFamily: '"Pathway Gothic One", sans-serif',
@@ -133,11 +192,13 @@ function LoginPage() {
               borderRadius: "5px",
               padding: "10px",
               width: "320px",
-              marginBottom: "10px",
+              margin: "10px 0",
               boxShadow: "0 2px 2px rgba(0, 0, 0, .7)",
+              cursor: isLoading ? "not-allowed" : "pointer",
+              opacity: isLoading ? 0.7 : 1,
             }}
           >
-            Login
+            {isLoading ? "Logging in..." : "Login"}
           </button>
           <br />
           <a
@@ -176,6 +237,7 @@ function LoginPage() {
             Create an Account
           </button>
         </div>
+        </form>
       </div>
     </>
   );
