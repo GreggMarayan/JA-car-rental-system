@@ -4,7 +4,7 @@ import LoginButton from "./LoginButton"; // adjust path if needed
 function Header() {
   // Simulated user data; replace with your actual user state or Firebase auth
   const user = {
-    name: "Jude Christian Amoguis",
+    name: "Jude,",
     email: "juan@example.com",
     photo: "/jude.jpg", // user profile picture
   };
