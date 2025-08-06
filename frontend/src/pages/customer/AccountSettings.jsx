@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Headerr from "../../components/Headerr";
 import Sidebar from "../../components/Sidebar";
-import { PencilIcon } from "@heroicons/react/24/solid";
+import { PencilIcon, CameraIcon } from "@heroicons/react/24/solid";
 
 function AccountSettings() {
   const [activeTab, setActiveTab] = useState("info");
@@ -81,7 +81,7 @@ function AccountSettings() {
                       className="w-32 h-32 rounded-full object-cover"
                     />
                     <div className="absolute bottom-1 right-1 bg-black p-1 rounded-full hover:scale-110 transition-transform duration-150 cursor-pointer">
-                      <PencilIcon className="w-4 h-4 text-white" />
+                      <CameraIcon className="w-4 h-4 text-white" />
                     </div>
                   </div>
                   <input
@@ -109,9 +109,9 @@ function AccountSettings() {
                 {/* Left: License Details */}
                 <div className="space-y-4 w-full md:w-1/2">
                   {[
-                    { label: "License No.", value: "N03-12-1234567" },
-                    { label: "Restrictions", value: "1,2" },
-                    { label: "Expiration Date", value: "December 20, 2026" },
+                    { label: "License No.", value: "K01-17-002807" },
+                    { label: "Restrictions", value: "A,A1,B,B1,B2" },
+                    { label: "Expiration Date", value: "04/18/2032" },
                   ].map((item, idx) => (
                     <div key={idx}>
                       <p className="font-bold text-lg">{item.label}</p>
@@ -136,7 +136,7 @@ function AccountSettings() {
                     className="max-w-xs rounded-md"
                   />
                   <div className="absolute bottom-2 right-2 bg-black p-1 rounded-full hover:scale-110 transition-transform duration-150 cursor-pointer">
-                    <PencilIcon className="w-4 h-4 text-white" />
+                    <CameraIcon className="w-4 h-4 text-white" />
                   </div>
                 </div>
               </div>

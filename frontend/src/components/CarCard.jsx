@@ -1,7 +1,6 @@
 import React from "react";
 
 function CarCard({ car, onBookNow }) {
-  // Determine status color dynamically
   const getStatusColor = (status) => {
     if (status === "Available") return "text-green-600";
     if (status === "Not Available") return "text-red-600";
@@ -11,8 +10,7 @@ function CarCard({ car, onBookNow }) {
 
   const handleBookNow = () => {
     if (car.status === "Available") {
-      alert("You must login first!");
-      onBookNow();
+      onBookNow(car);
     } else {
       alert(`This car is currently ${car.status}. Booking is unavailable.`);
     }
@@ -25,7 +23,7 @@ function CarCard({ car, onBookNow }) {
         alt={car.name}
         className="w-full h-48 object-contain mb-4 hover:scale-105 transition-transform"
       />
-      <p className="font-semibold text-center">{car.name}</p>
+      <p className="font-semibold">{car.name}</p>
       <p>{car.seats}</p>
       <p>{car.engine}</p>
       <p>{car.type}</p>

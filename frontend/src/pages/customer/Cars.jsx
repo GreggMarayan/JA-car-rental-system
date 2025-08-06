@@ -1,8 +1,11 @@
-import React from "react";
+// src/pages/customer/Cars.jsx
+import React, { useState } from "react";
 import Headerr from "../../components/Headerr";
 import Sidebar from "../../components/Sidebar";
 import CarList from "../../components/CarList";
-import { useNavigate } from "react-router-dom";
+import BookingModal from "../../components/BookingModal";
+import BookingDetailsModal from "../../components/BookingDetailsModal";
+import DriverDetailsModal from "../../components/DriverDetailsModal";
 
 const cars = [
   {
@@ -68,25 +71,56 @@ const cars = [
 ];
 
 function Cars() {
-  const navigate = useNavigate();
+  const [selectedCar, setSelectedCar] = useState(null);
+  const [bookingData, setBookingData] = useState(null);
+  const [showDriverDetails, setShowDriverDetails] = useState(false);
 
-  const handleBookNow = () => {
-    navigate("/login");
+  const handleBookNow = (car) => {
+    setSelectedCar(car);
   };
+
+  const handleBookingSubmit = (data) => {
+    setBookingData(data);
+    setSelectedCar(null); // Close booking modal
+  };
+
+  const closeBookingModal = () => setSelectedCar(null);
+  const closeDetailsModal = () => setBookingData(null);
+  const openDriverDetails = () => setShowDriverDetails(true);
+  const closeDriverDetails = () => setShowDriverDetails(false);
 
   return (
     <div className="min-h-screen flex flex-col">
       <Headerr />
       <div className="flex flex-1">
         <Sidebar />
-        <main className="px-8 py-12">
+        <main className="px-8 py-12 w-full">
           <h1 className="text-4xl font-bold mb-8 flex justify-center italic">
             J&A CARS
           </h1>
           <CarList cars={cars} onBookNow={handleBookNow} />
         </main>
       </div>
+
+      {selectedCar && (
+        <BookingModal
+          car={selectedCar}
+          onClose={closeBookingModal}
+          onSubmit={handleBookingSubmit}
+        />
+      )}
+
+      {bookingData && (
+        <BookingDetailsModal
+          data={bookingData}
+          onClose={closeDetailsModal}
+          onDriverDetails={openDriverDetails}
+        />
+      )}
+
+      {showDriverDetails && <DriverDetailsModal onClose={closeDriverDetails} />}
     </div>
   );
 }
+
 export default Cars;

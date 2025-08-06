@@ -10,7 +10,7 @@ function BookingHistory() {
       <div className="flex flex-1">
         <Sidebar />
         <main className="flex flex-col gap-4 p-4 w-full">
-          <DashboardCard title="BOOKING HISTORY" subtitle="" link="/">
+          <DashboardCard title="BOOKING HISTORY" subtitle="">
             <div className="flex justify-end mb-4">
               <input
                 type="text"

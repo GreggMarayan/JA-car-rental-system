@@ -45,17 +45,19 @@ function MyProfile() {
             <div className="space-y-2 text-lg">
               <p>
                 <span className="font-semibold">First Name:</span>{" "}
-                {user.firstName}
+                <span className="underline">{user.firstName}</span>
               </p>
               <p>
                 <span className="font-semibold">Last Name:</span>{" "}
-                {user.lastName}
+                <span className="underline"> {user.lastName} </span>
               </p>
               <p>
-                <span className="font-semibold">Address:</span> {user.address}
+                <span className="font-semibold">Address:</span>
+                <span className="underline">{user.address}</span>
               </p>
               <p>
-                <span className="font-semibold">Email:</span> {user.email}
+                <span className="font-semibold">Email:</span>
+                <span className="underline">{user.email}</span>
               </p>
             </div>
           </DashboardCard>
@@ -65,15 +67,15 @@ function MyProfile() {
             <div className="space-y-2 text-lg">
               <p>
                 <span className="font-semibold">License No:</span>{" "}
-                {user.license.number}
+                <span className="underline">{user.license.number}</span>
               </p>
               <p>
                 <span className="font-semibold">Restriction:</span>{" "}
-                {user.license.restriction}
+                <span className="underline">{user.license.restriction}</span>
               </p>
               <p>
                 <span className="font-semibold">Expiration:</span>{" "}
-                {user.license.expiration}
+                <span className="underline">{user.license.expiration}</span>
               </p>
             </div>
           </DashboardCard>
