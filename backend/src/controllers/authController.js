@@ -7,8 +7,8 @@ const login = async (req, res) => {
     const { username, password } = req.body;
     console.log('Login attempt for username:', username);
 
-    // Find user by username (case-insensitive search)
-    const user = await prisma.customer.findFirst({
+    // First try to find in Admin table
+    const admin = await prisma.admin.findFirst({
       where: {
         username: {
           equals: username.trim(),
@@ -17,7 +17,17 @@ const login = async (req, res) => {
       },
     });
 
-    console.log('Found user:', user ? 'Yes' : 'No');
+    // If not found in Admin, try Customer table
+    const user = admin || await prisma.customer.findFirst({
+      where: {
+        username: {
+          equals: username.trim(),
+          mode: 'insensitive',
+        },
+      },
+    });
+
+    console.log('Found user:', user ? `Yes (${admin ? 'Admin' : 'Customer'})` : 'No');
 
     // Check if user exists
     if (!user) {
@@ -33,29 +43,33 @@ const login = async (req, res) => {
       return res.status(401).json({ error: 'Invalid username or password' });
     }
 
+    const isAdmin = !!admin;
+    const userIdField = isAdmin ? 'admin_id' : 'customer_id';
+    const userType = isAdmin ? 'admin' : 'customer';
+
     // Create JWT token
     const token = jwt.sign(
       { 
-        id: user.customer_id,
+        id: user[userIdField],
         username: user.username,
         email: user.email,
-        role: 'customer' 
+        role: userType
       },
       process.env.JWT_SECRET || 'your-secret-key',
       { expiresIn: '1d' }
     );
 
-    // Return user data (excluding password) and token
+    // Return user data (excluding password)
     const { password: _, ...userWithoutPassword } = user;
     
     res.json({
       token,
       user: {
-        id: user.customer_id,
+        id: user[userIdField],
         username: user.username,
         email: user.email,
         name: `${user.first_name} ${user.last_name}`,
-        role: 'customer'
+        role: userType
       }
     });
 
