@@ -12,6 +12,7 @@
 
 .admin-sidebar a {
   text-decoration: none;
+  transition: all 0.3s ease;
   color: #000;
   font-size: 24px;
   padding-left: 10px;
@@ -30,6 +31,10 @@
   color: #797979;
   font-size: 24px;
   padding-left: 10px;
+<<<<<<< HEAD
+=======
+  cursor: default;
+>>>>>>> 05dd730eb1efdca980d974cd9b2b8814fb8e990a
 }
 
 hr {

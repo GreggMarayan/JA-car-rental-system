@@ -9,18 +9,39 @@ import {
   getPaginationRowModel,
   flexRender,
 } from "@tanstack/react-table";
-import { scheduleColumns } from "./ScheduleColumns.jsx";
-import { useScheduleStore } from "../../store/useScheduleStore.js";
+import { scheduleColumns } from "../accessor/ScheduleColumns.jsx";
+import { useScheduleStore } from "../../store/schedule.js";
+import { HiCalendar, HiMagnifyingGlass } from "react-icons/hi2";
+import ReleaseModal from "../../components/modal/ReleaseModal";
 
 export default function AdminSchedulePage() {
-  const data = useScheduleStore((state) => state.reservations);
+  const allData = useScheduleStore((state) => state.reservations);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const columns = useMemo(() => scheduleColumns, []);
+  // Filter data based on search term
+  const filteredData = useMemo(() => {
+    if (!searchTerm.trim()) return allData;
+    const term = searchTerm.toLowerCase();
+    return allData.filter(item => 
+      (item.customerName && item.customerName.toLowerCase().includes(term)) ||
+      (item.driverName && item.driverName.toLowerCase().includes(term))
+    );
+  }, [allData, searchTerm]);
+
   const [sorting, setSorting] = useState([]);
-  const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 5 });
+  const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 10 });
+  const [showReleaseModal, setShowReleaseModal] = useState(false);
+  const [selectedReservation, setSelectedReservation] = useState(null);
+
+  const handleReleaseClick = (reservation) => {
+    setSelectedReservation(reservation);
+    setShowReleaseModal(true);
+  };
+
+  const columns = useMemo(() => scheduleColumns(handleReleaseClick), []);
 
   const table = useReactTable({
-    data,
+    data: filteredData,
     columns,
     state: { sorting, pagination },
     onSortingChange: (updater) => {
@@ -37,12 +58,33 @@ export default function AdminSchedulePage() {
     <>
       <Header />
       <AdminSideBar />
+
+      {showReleaseModal && (
+        <ReleaseModal 
+          show={showReleaseModal} 
+          onClose={() => setShowReleaseModal(false)} 
+          reservation={selectedReservation}
+        />
+      )}
       <div className="page-content">
         <title>Schedule</title>
 
-        <h1>
-          Hilu, Admin Goy! <br /> mao ni ang skedyul
-        </h1>
+        <div className="flex justify-between items-center mb-4">
+          <h1 className="font-pathway text-2xl header-req">
+            <HiCalendar style={{ verticalAlign: "-3px", marginRight: "5px" }} />
+            SCHEDULE
+          </h1>
+          <div className="relative">
+            <input
+              type="text"
+              placeholder="Search by name..."
+              className="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <HiMagnifyingGlass className="absolute left-3 top-3 text-gray-400" />
+          </div>
+        </div>
         <div className="p-4">
           <table className="min-w-full admin-schedule-table">
             <thead className="bg-gray-100">
@@ -95,14 +137,7 @@ export default function AdminSchedulePage() {
               ))}
             </tbody>
           </table>
-          <div
-            className="mt-2 flex gap-2"
-            style={{
-              marginTop: "20px",
-              alignItems: "center",
-              placeContent: "center",
-            }}
-          >
+          <div className="mt-2 flex gap-2 pagination">
             <button
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
@@ -110,7 +145,7 @@ export default function AdminSchedulePage() {
               ← Prev
             </button>
             <span style={{ padding: "0 10px" }}>
-              Page {table.getState().pagination.pageIndex + 1} of{" "}
+              {table.getState().pagination.pageIndex + 1} of{" "}
               {table.getPageCount()}
             </span>
             <button
