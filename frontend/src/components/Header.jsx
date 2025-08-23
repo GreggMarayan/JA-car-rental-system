@@ -1,49 +1,54 @@
 import { Link } from "react-router-dom";
-import LoginButton from "./LoginButton"; // adjust your path if needed
 
 function Header() {
+  const headerStyle = {
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100vw",
+    height: "70px",
+    backgroundColor: "black",
+    zIndex: 10,
+    display: "flex",
+    flexDirection: "column",
+    overflow: "hidden",
+  };
   return (
-    <header
-      style={{
-        backgroundColor: "black",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        padding: "0 30px",
-        height: "105px",
-      }}
-    >
-      <Link to="/" style={{ textDecoration: "none" }}>
-        <div style={{ lineHeight: "1", marginLeft: "30px" }}>
-          <p
-            style={{
-              fontFamily: '"Merriweather", serif',
-              fontSize: "36px",
-              color: "#FF0000",
-              fontStyle: "italic",
-              fontWeight: "bolder",
-              textShadow: "1.5px 1.5px 0 rgba(255,255,255,1)",
-              left: "60px",
-              margin: 0,
-            }}
-          >
-            J&amp;A
-          </p>
-          <p
-            style={{
-              fontFamily: '"Merriweather", serif',
-              fontSize: "18px",
-              color: "#FF0000",
-              fontStyle: "italic",
-              fontWeight: "bolder",
-              textShadow: ".5px .5px 0 rgba(255,255,255,1)",
-              margin: 0,
-            }}
-          >
-            CAR RENTAL
-          </p>
-        </div>
-      </Link>
+    <header style={headerStyle}>
+      <div style={{ padding: "0" }}>
+        <Link
+          to="/"
+          style={{
+            fontFamily: '"Merriweather", serif',
+            fontSize: "30px",
+            color: "#FF0000",
+            paddingLeft: "35px",
+            fontStyle: "italic",
+            fontWeight: "bolder",
+            textShadow: "2px 2px 0 rgba(255,255,255,.85)",
+            textDecoration: "none",
+          }}
+        >
+          J&amp;A
+        </Link>
+        <br />
+        <Link
+          to="/"
+          style={{
+            fontFamily: '"Merriweather", serif',
+            fontSize: "18px",
+            color: "#FF0000",
+            fontStyle: "italic",
+            paddingLeft: "10px",
+            marginTop: "-40px",
+            fontWeight: "bolder",
+            textShadow: "2px 2px 0 rgba(255,255,255,.85)",
+            textDecoration: "none",
+          }}
+        >
+          CAR RENTAL
+        </Link>
+      </div>
     </header>
   );
 }

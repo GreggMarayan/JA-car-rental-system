@@ -6,21 +6,19 @@ import { Link } from "react-router-dom";
 
 export default function HomePage() {
   return (
-    <div>
+    <>
       <Header />
-
       <div
         className="m-0 p-0 h-screen"
         style={{
           backgroundImage: `url(${carImage})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          backgroundRepeat: "no-repeat",
-          height: "100vh",
-          width: "100vw",
+          height: "105vh",
           placeContent: "center",
           justifyItems: "center",
           textAlign: "center",
+          zIndex: "100",
         }}
       >
         <LoginButton />
@@ -31,19 +29,16 @@ export default function HomePage() {
             borderRadius: "20px",
             width: "600px",
             marginTop: "-180px",
-            textShadow: "1px 1px 0 rgba(255,255,255,1)",
-            fontStyle: "none",
-            fontWeight: "bold",
           }}
         >
           <div>
-            <h1 className="text-[60px] font-bold">Welcome to</h1>
-            <h1 className="text-[72px] font-extrabold">J&A Car Rental</h1>
+            <h1 className="text-[48px]">Welcome to</h1>
+            <h1 className="text-[72px]">J&A Car Rental</h1>
           </div>
         </div>
         <div>
           <h1
-            className="text-[96px] text-[#F13F3F] font-semibold"
+            className="text-[96px] text-[#F13F3F]"
             style={{
               fontStyle: "italic",
               textShadow: "2px 2px 0 rgba(255,255,255,1)",
@@ -55,7 +50,7 @@ export default function HomePage() {
             Let's get you
           </h1>
           <h1
-            className="text-[96px] text-[#F13F3F] font-extrabold"
+            className="text-[96px] text-[#F13F3F]"
             style={{
               fontStyle: "italic",
               textShadow: "2px 2px 0 rgba(255,255,255,1)",
@@ -66,23 +61,18 @@ export default function HomePage() {
           >
             on the ROAD
           </h1>
-          <Link to="/book-now">
+          <Link to="/">
             <button
               style={{
+                fontStyle: "italic",
                 position: "absolute",
-                bottom: "-40px",
-                right: "60px",
-                backgroundColor: "lightgray",
-                color: "black",
-                fontFamily: '"Pathway Gothic One", sans-serif',
-                fontSize: "18px",
-                fontWeight: "bold",
-                border: "2px solid #ffffff",
-                borderRadius: "10px",
-                padding: "8px 12px",
+                right: "110px",
+                bottom: "0",
+                marginTop: "55px",
+                border: "none",
+                borderRadius: "20px",
+                padding: "5px",
                 cursor: "pointer",
-                boxShadow: "0 4px 6px rgba(0,0,0,0.3)",
-                zIndex: 1000,
               }}
             >
               Book Now →
@@ -90,6 +80,6 @@ export default function HomePage() {
           </Link>
         </div>
       </div>
-    </div>
+    </>
   );
 }

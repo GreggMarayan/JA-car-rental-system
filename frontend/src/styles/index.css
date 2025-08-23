@@ -1,9 +1,21 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
-@import "tailwindcss";
+@tailwind utilities;
 
 .font-pathway {
   font-family: "Pathway Gothic One", sans-serif;
-  font-family: ;
+}
+
+table tbody tr {
+  border-bottom: 1px solid #000;
+}
+
+#globeButton {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+#globeButton:hover {
+  color: #888888;
 }
