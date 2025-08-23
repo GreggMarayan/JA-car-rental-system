@@ -16,7 +16,7 @@
   color: #000;
   font-size: 24px;
   padding-left: 10px;
-  font-family: "Pathway Gothic One", sans-serif;
+  font-family: 'Pathway Gothic One', sans-serif;
 }
 
 .admin-sidebar a:hover {
@@ -31,10 +31,7 @@
   color: #797979;
   font-size: 24px;
   padding-left: 10px;
-<<<<<<< HEAD
-=======
   cursor: default;
->>>>>>> 05dd730eb1efdca980d974cd9b2b8814fb8e990a
 }
 
 hr {
