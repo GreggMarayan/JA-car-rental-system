@@ -1,24 +1,24 @@
-import React from "react";
-import Headerr from "../../components/Headerr";
-import Sidebar from "../../components/Sidebar";
-import DashboardCard from "../../components/DashboardCard"; // assuming you have a reusable card
+import React from 'react';
+import Headerr from '../../components/Headerr';
+// import Sidebar from '../../components/Sidebar';
+import DashboardCard from '../../components/DashboardCard'; // assuming you have a reusable card
 
 function MyProfile() {
   const user = {
-    firstName: "Jude Christian",
-    lastName: "Amoguis",
-    address: "Butuan City, Agusan del Norte",
-    email: "judechristian.amoguis@gmail.com",
-    photo: "/jude.jpg", // must be placed inside /public
+    firstName: 'Jude Christian',
+    lastName: 'Amoguis',
+    address: 'Butuan City, Agusan del Norte',
+    email: 'judechristian.amoguis@gmail.com',
+    photo: '/jude.jpg', // must be placed inside /public
     license: {
-      number: "AB123456",
-      restriction: "1, 2",
-      expiration: "12/31/2027",
+      number: 'AB123456',
+      restriction: '1, 2',
+      expiration: '12/31/2027',
     },
     favoriteCar: {
-      name: "Nissan Terra 2018 EL",
-      type: "SUV",
-      img: "/terra.png",
+      name: 'Nissan Terra 2018 EL',
+      type: 'SUV',
+      img: '/terra.png',
     },
   };
 
@@ -26,7 +26,7 @@ function MyProfile() {
     <div className="min-h-screen flex flex-col">
       <Headerr />
       <div className="flex flex-1">
-        <Sidebar />
+        {/* <Sidebar /> */}
 
         <main className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 flex-1">
           {/* Profile Picture Card */}
@@ -44,11 +44,11 @@ function MyProfile() {
           <DashboardCard title="Personal Details">
             <div className="space-y-2 text-lg">
               <p>
-                <span className="font-semibold">First Name:</span>{" "}
+                <span className="font-semibold">First Name:</span>{' '}
                 <span className="underline">{user.firstName}</span>
               </p>
               <p>
-                <span className="font-semibold">Last Name:</span>{" "}
+                <span className="font-semibold">Last Name:</span>{' '}
                 <span className="underline"> {user.lastName} </span>
               </p>
               <p>
@@ -66,15 +66,15 @@ function MyProfile() {
           <DashboardCard title="Driver's License">
             <div className="space-y-2 text-lg">
               <p>
-                <span className="font-semibold">License No:</span>{" "}
+                <span className="font-semibold">License No:</span>{' '}
                 <span className="underline">{user.license.number}</span>
               </p>
               <p>
-                <span className="font-semibold">Restriction:</span>{" "}
+                <span className="font-semibold">Restriction:</span>{' '}
                 <span className="underline">{user.license.restriction}</span>
               </p>
               <p>
-                <span className="font-semibold">Expiration:</span>{" "}
+                <span className="font-semibold">Expiration:</span>{' '}
                 <span className="underline">{user.license.expiration}</span>
               </p>
             </div>

@@ -1,17 +1,17 @@
-import React, { useState } from "react";
-import Headerr from "../../components/Headerr";
-import Sidebar from "../../components/Sidebar";
-import { PencilIcon, CameraIcon } from "@heroicons/react/24/solid";
+import React, { useState } from 'react';
+import Headerr from '../../components/Headerr';
+// import Sidebar from '../../components/Sidebar';
+import { PencilIcon, CameraIcon } from '@heroicons/react/24/solid';
 
 function AccountSettings() {
-  const [activeTab, setActiveTab] = useState("info");
+  const [activeTab, setActiveTab] = useState('info');
 
   return (
     <div className="min-h-screen flex flex-col">
       <Headerr />
       <div className="flex flex-1">
         {/* Sidebar */}
-        <Sidebar />
+        {/* <Sidebar /> */}
 
         {/* Main content area */}
         <div className="flex justify-center items-start w-full py-10 px-4">
@@ -21,52 +21,48 @@ function AccountSettings() {
               <button
                 className={`px-4 py-1 font-semibold transition-colors duration-200 cursor-pointer
                   ${
-                    activeTab === "info"
-                      ? "border-b-2 border-black text-black"
-                      : "text-gray-500 hover:text-black"
+                    activeTab === 'info'
+                      ? 'border-b-2 border-black text-black'
+                      : 'text-gray-500 hover:text-black'
                   }`}
-                onClick={() => setActiveTab("info")}
+                onClick={() => setActiveTab('info')}
               >
                 Info
               </button>
               <button
                 className={`px-4 py-1 font-semibold transition-colors duration-200 cursor-pointer
                   ${
-                    activeTab === "license"
-                      ? "border-b-2 border-black text-black"
-                      : "text-gray-500 hover:text-black"
+                    activeTab === 'license'
+                      ? 'border-b-2 border-black text-black'
+                      : 'text-gray-500 hover:text-black'
                   }`}
-                onClick={() => setActiveTab("license")}
+                onClick={() => setActiveTab('license')}
               >
                 License
               </button>
             </div>
 
             {/* Info Tab */}
-            {activeTab === "info" && (
+            {activeTab === 'info' && (
               <div className="flex flex-col md:flex-row items-center gap-6">
                 {/* Left: User Details */}
                 <div className="flex-1 space-y-3">
                   {[
-                    { label: "First Name:", value: "Jude Christian" },
-                    { label: "Last Name:", value: "Amoguis" },
+                    { label: 'First Name:', value: 'Jude Christian' },
+                    { label: 'Last Name:', value: 'Amoguis' },
                     {
-                      label: "Address:",
-                      value: "Butuan City, Agusan Del Norte",
+                      label: 'Address:',
+                      value: 'Butuan City, Agusan Del Norte',
                     },
                     {
-                      label: "Email:",
-                      value: "judechristian.amoguis@gmail.com",
+                      label: 'Email:',
+                      value: 'judechristian.amoguis@gmail.com',
                     },
-                    { label: "Birthdate:", value: "April 18, 1997" },
+                    { label: 'Birthdate:', value: 'April 18, 1997' },
                   ].map((item, idx) => (
                     <div key={idx} className="flex items-center">
-                      <span className="font-bold w-32 text-right mr-2">
-                        {item.label}
-                      </span>
-                      <span className="border-b border-black flex-1 pb-0.5">
-                        {item.value}
-                      </span>
+                      <span className="font-bold w-32 text-right mr-2">{item.label}</span>
+                      <span className="border-b border-black flex-1 pb-0.5">{item.value}</span>
                       <PencilIcon className="w-4 h-4 ml-2 text-gray-500 cursor-pointer hover:text-black hover:scale-110 transition-transform duration-150" />
                     </div>
                   ))}
@@ -104,14 +100,14 @@ function AccountSettings() {
             )}
 
             {/* License Tab */}
-            {activeTab === "license" && (
+            {activeTab === 'license' && (
               <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                 {/* Left: License Details */}
                 <div className="space-y-4 w-full md:w-1/2">
                   {[
-                    { label: "License No.", value: "K01-17-002807" },
-                    { label: "Restrictions", value: "A,A1,B,B1,B2" },
-                    { label: "Expiration Date", value: "04/18/2032" },
+                    { label: 'License No.', value: 'K01-17-002807' },
+                    { label: 'Restrictions', value: 'A,A1,B,B1,B2' },
+                    { label: 'Expiration Date', value: '04/18/2032' },
                   ].map((item, idx) => (
                     <div key={idx}>
                       <p className="font-bold text-lg">{item.label}</p>
@@ -130,11 +126,7 @@ function AccountSettings() {
 
                 {/* Right: License Image */}
                 <div className="relative">
-                  <img
-                    src="/dlicense.png"
-                    alt="Driver's License"
-                    className="max-w-xs rounded-md"
-                  />
+                  <img src="/dlicense.png" alt="Driver's License" className="max-w-xs rounded-md" />
                   <div className="absolute bottom-2 right-2 bg-black p-1 rounded-full hover:scale-110 transition-transform duration-150 cursor-pointer">
                     <CameraIcon className="w-4 h-4 text-white" />
                   </div>

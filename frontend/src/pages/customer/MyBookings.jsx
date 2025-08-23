@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import Headerr from "../../components/Headerr";
-import Sidebar from "../../components/Sidebar";
-import DashboardCard from "../../components/DashboardCard";
+import React, { useState } from 'react';
+import Headerr from '../../components/Headerr';
+// import Sidebar from '../../components/Sidebar';
+import DashboardCard from '../../components/DashboardCard';
 
 function MyBookings() {
   const [modalContent, setModalContent] = useState(null);
@@ -18,7 +18,7 @@ function MyBookings() {
     <div className="min-h-screen flex flex-col">
       <Headerr />
       <div className="flex flex-1">
-        <Sidebar />
+        {/* <Sidebar /> */}
         <main className="flex flex-col gap-4 p-4 w-full">
           <DashboardCard title="MY BOOKINGS" subtitle="">
             <div className="flex justify-end mb-4">
@@ -31,34 +31,16 @@ function MyBookings() {
             <table className="w-full text-sm border border-gray-300">
               <thead>
                 <tr className="bg-gray-100">
-                  <th className="border border-gray-300 px-8 py-0.5">
-                    Booking Date
-                  </th>
-                  <th className="border border-gray-300 px-8 py-0.5">
-                    Start Date
-                  </th>
-                  <th className="border border-gray-300 px-8 py-0.5">
-                    Pick-Up Time
-                  </th>
-                  <th className="border border-gray-300 px-8 py-0.5">
-                    Pick-Up Location
-                  </th>
-                  <th className="border border-gray-300 px-8 py-0.5">
-                    End Date
-                  </th>
-                  <th className="border border-gray-300 px-8 py-0.5">
-                    Drop-Off Time
-                  </th>
-                  <th className="border border-gray-300 px-8 py-0.5">
-                    Drop-Off Location
-                  </th>
-                  <th className="border border-gray-300 px-8 py-0.5">
-                    Car Model
-                  </th>
+                  <th className="border border-gray-300 px-8 py-0.5">Booking Date</th>
+                  <th className="border border-gray-300 px-8 py-0.5">Start Date</th>
+                  <th className="border border-gray-300 px-8 py-0.5">Pick-Up Time</th>
+                  <th className="border border-gray-300 px-8 py-0.5">Pick-Up Location</th>
+                  <th className="border border-gray-300 px-8 py-0.5">End Date</th>
+                  <th className="border border-gray-300 px-8 py-0.5">Drop-Off Time</th>
+                  <th className="border border-gray-300 px-8 py-0.5">Drop-Off Location</th>
+                  <th className="border border-gray-300 px-8 py-0.5">Car Model</th>
                   <th className="border border-gray-300 px-8 py-0.5">Status</th>
-                  <th className="border border-gray-300 px-8 py-0.5">
-                    Actions
-                  </th>
+                  <th className="border border-gray-300 px-8 py-0.5">Actions</th>
                 </tr>
               </thead>
               <tbody className="text-center">
@@ -75,7 +57,7 @@ function MyBookings() {
                   <td className="border px-2 py-1">
                     <button
                       className="bg-blue-500 text-white px-2 py-1 rounded-xl hover:bg-red-600"
-                      onClick={() => openModal("Extend")}
+                      onClick={() => openModal('Extend')}
                     >
                       Extend
                     </button>
@@ -94,7 +76,7 @@ function MyBookings() {
                   <td className="border px-2 py-1">
                     <button
                       className="bg-blue-500 text-white px-2 py-1 rounded-xl hover:bg-red-600"
-                      onClick={() => openModal("Cancel")}
+                      onClick={() => openModal('Cancel')}
                     >
                       Cancel
                     </button>
@@ -113,7 +95,7 @@ function MyBookings() {
                   <td className="border px-2 py-1">
                     <button
                       className="bg-blue-500 text-white px-2 py-1 rounded-xl hover:bg-red-600"
-                      onClick={() => openModal("Edit")}
+                      onClick={() => openModal('Edit')}
                     >
                       Edit
                     </button>
@@ -134,12 +116,8 @@ function MyBookings() {
             <table className="w-full text-sm border border-gray-300">
               <thead>
                 <tr className="bg-gray-100">
-                  <th className="border border-gray-300 px-8 py-0.5">
-                    Booking Date
-                  </th>
-                  <th className="border border-gray-300 px-8 py-0.5">
-                    Description
-                  </th>
+                  <th className="border border-gray-300 px-8 py-0.5">Booking Date</th>
+                  <th className="border border-gray-300 px-8 py-0.5">Description</th>
                   <th className="border border-gray-300 px-8 py-0.5">Amount</th>
                   <th className="border border-gray-300 px-8 py-0.5">Status</th>
                 </tr>
@@ -147,9 +125,7 @@ function MyBookings() {
               <tbody className="text-center">
                 <tr>
                   <td className="border px-2 py-1">3/29/2025</td>
-                  <td className="border px-2 py-1">
-                    Reservation, Delivery & Driver Fee
-                  </td>
+                  <td className="border px-2 py-1">Reservation, Delivery & Driver Fee</td>
                   <td className="border px-2 py-1">3,000 </td>
                   <td className="border px-2 py-1">Paid</td>
                 </tr>
@@ -171,8 +147,7 @@ function MyBookings() {
           <div className="bg-white rounded-xl shadow-lg p-6 max-w-md w-full">
             <h2 className="text-xl font-bold mb-4">{modalContent} Booking</h2>
             <p className="mb-4">
-              Are you sure you want to{" "}
-              <strong>{modalContent.toUpperCase()}</strong> this booking?
+              Are you sure you want to <strong>{modalContent.toUpperCase()}</strong> this booking?
             </p>
             <div className="flex justify-end gap-2">
               <button
