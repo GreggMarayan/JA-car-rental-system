@@ -14,13 +14,14 @@ import AdminReportAnalytics from './pages/admin/AdminReportAnalytics';
 import AdminSettings from './pages/admin/AdminSettings';
 
 // judex components
-import Cars from './pages/customer/Cars';
-import BookingHistory from './pages/customer/BookingHistory';
-import AccountSettings from './pages/customer/AccountSettings';
+import CustomerCars from './pages/customer/CustomerCars';
+import CustomerBookingHistory from './pages/customer/CustomerBookingHistory';
+import CustomerAccountSettings from './pages/customer/CustomerAccountSettings';
 import CustomerDashboard from './pages/customer/CustomerDashboard';
-import MyBookings from './pages/customer/MyBookings';
-import MyProfile from './pages/customer/MyProfile';
-import Schedule from './pages/customer/Schedule';
+import CustomerMyBookings from './pages/customer/CustomerMyBookings';
+import CustomerProfile from './pages/customer/CustomerProfile';
+import CustomerSchedule from './pages/customer/CustomerSchedule';
+import CustomerLogout from './pages/customer/CustomerLogout';
 
 function App() {
   return (
@@ -39,14 +40,15 @@ function App() {
           <Route path="/login" element={<LoginPage />} />
 
           {/* judex routes start*/}
-          <Route path="/cars" element={<Cars />} />
-          <Route path="/booking-history" element={<BookingHistory />} />
-          <Route path="/account-settings" element={<AccountSettings />} />
+          <Route path="/customer-cars" element={<CustomerCars />} />
+          <Route path="/customer-history" element={<CustomerBookingHistory />} />
+          <Route path="/customer-account" element={<CustomerAccountSettings />} />
           <Route path="/customer-dashboard" element={<CustomerDashboard />} />
-          <Route path="/my-bookings" element={<MyBookings />} />
-          <Route path="/my-profile" element={<MyProfile />} />
-          <Route path="/customer-schedule" element={<Schedule />} />
-          {/* judex routes emd*/}
+          <Route path="/customer-bookings" element={<CustomerMyBookings />} />
+          <Route path="/customer-profile" element={<CustomerProfile />} />
+          <Route path="/customer-schedule" element={<CustomerSchedule />} />
+          <Route path="/customer-logout" element={<CustomerLogout />} />
+          {/* judex routes end*/}
 
           <Route path="/" element={<HomePage />} />
         </Routes>

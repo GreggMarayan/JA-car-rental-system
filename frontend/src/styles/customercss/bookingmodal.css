@@ -1,0 +1,138 @@
+/* ===========================
+   Buttons
+   =========================== */
+
+/* Container for form action buttons */
+.btn-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 50px;
+  margin-top: 20px;
+  margin-left: 100px;
+}
+
+/* Base button style */
+.btn {
+  padding: 8px 16px;
+  font-weight: bold;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+  font-size: 14px;
+}
+
+/* Primary action button */
+.btn-primary {
+  background-color: #e53935;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #13d817;
+  color: white;
+}
+
+/* Secondary button (cancel/edit) */
+.btn-secondary {
+  background-color: #ccc;
+  color: #333;
+}
+
+.btn-secondary:hover {
+  background-color: #bbb;
+}
+
+/* ===========================
+   Tabs
+   =========================== */
+
+.tab-btn.active {
+  background-color: #e53935;
+  color: white;
+}
+
+.tab-btn:not(.active) {
+  background-color: #ccc;
+  color: black;
+}
+
+.tab-btn:hover {
+  background-color: #13d817;
+  color: black;
+}
+
+.tab-btn {
+  padding: 8px 16px;
+  font-weight: bold;
+  background-color: transparent;
+  cursor: pointer;
+  margin-right: 10px;
+  border-radius: 4px;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Tab container */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0px;
+  margin-bottom: 15px;
+}
+
+/* ===========================
+   Modal
+   =========================== */
+
+.modal {
+  background: #fff;
+  max-height: 90vh; /* keeps modal at original size */
+  overflow-y: auto; /* allow scrolling if content is long */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* ===========================
+   Driver Details
+   =========================== */
+
+.driver-section {
+  margin: 10px 0;
+}
+
+.driver-details-btn {
+  background: none;
+  border: none;
+  color: #e53935;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+  margin-top: -5px;
+}
+
+.driver-details-btn:hover {
+  color: #13d817;
+}
+
+.driver-details {
+  margin-top: 8px;
+  padding: 8px 12px;
+  background: #f7f7f7;
+  border-radius: 4px;
+  font-size: 14px;
+
+  /* smooth slide down */
+  max-height: 500px;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-link {
+  color: black;
+  background-color: #13d817;
+}
