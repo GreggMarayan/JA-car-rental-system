@@ -8,6 +8,8 @@
   padding: 0px;
   display: flex;
   justify-content: center;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 20px;
 }
 
 .profile-container {
@@ -46,6 +48,8 @@
   color: #100f0f;
   line-height: 1.6;
   box-shadow: 0 4px 4px rgba(62, 61, 61, 0.1);
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 20px;
 }
 
 .right-section {
@@ -67,7 +71,8 @@
   display: flex;
   justify-content: space-between;
   margin: 10px 0;
-  font-size: 15px;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 20px;
 }
 
 .line-field {

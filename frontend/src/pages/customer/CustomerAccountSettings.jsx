@@ -11,12 +11,12 @@ export default function AccountSettings() {
   const [pendingSave, setPendingSave] = useState(null);
 
   const [formData, setFormData] = useState({
-    firstName: 'John',
-    lastName: 'Mayer',
-    address: 'Talamban, Mandaue City',
-    email: 'johnmayer@gmail.com',
+    firstName: 'Jude Christian',
+    lastName: 'Amoguis',
+    address: 'R.Calo, Butuan City',
+    email: 'judechristian.amoguis@gmail.com',
     birthdate: '1997-04-01',
-    username: 'johnmayer97',
+    username: 'judeex18',
     password: '************',
     profilePicture: '/jude.jpg',
     licenseNo: 'K01-17-002807',

@@ -1,7 +1,9 @@
+// src/pages/customer/CustomerSchedule.jsx
 import React, { useMemo, useState } from 'react';
 import CustomerSideBar from '../../components/CustomerSideBar';
 import CustomerHeader from '../../components/CustomerHeader';
-import { useScheduleStore } from '../../store/schedule.js';
+import { useScheduleStore } from '../../customerstore/scheduleStore';
+import { scheduleColumns } from '../customeraccessor/scheduleColumns';
 import { HiCalendar, HiMagnifyingGlass } from 'react-icons/hi2';
 import {
   useReactTable,
@@ -9,12 +11,12 @@ import {
   getPaginationRowModel,
   flexRender,
 } from '@tanstack/react-table';
+import '../../styles/customercss/customerschedule.css'; // Add your CSS here
 
 export default function CustomerSchedulePage() {
   const allData = useScheduleStore((state) => state.reservations);
   const [searchTerm, setSearchTerm] = useState('');
   const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 5 });
-
   const customerId = 1; // Replace with real logged-in customer ID
 
   // Filter reservations
@@ -28,60 +30,10 @@ export default function CustomerSchedulePage() {
     );
   }, [allData, customerId, searchTerm]);
 
-  // Define columns
-  const columns = [
-    {
-      header: 'Start Date',
-      accessorKey: 'startDate',
-    },
-    {
-      header: 'PickUp Time',
-      accessorKey: 'pickupTime',
-    },
-    {
-      header: 'PickUp Location',
-      accessorKey: 'pickupLocation',
-    },
-    {
-      header: 'End Date',
-      accessorKey: 'endDate',
-    },
-    {
-      header: 'Drop-Off Time',
-      accessorKey: 'dropoffTime',
-    },
-    {
-      header: 'Drop-Off Location',
-      accessorKey: 'dropoffLocation',
-    },
-    {
-      header: 'Car Model',
-      cell: (info) => {
-        const row = info.row.original;
-        return (
-          <div className="flex items-center justify-center gap-2">
-            {row.carImage ? (
-              <img
-                src={row.carImage}
-                alt={row.carModel}
-                className="w-12 h-8 object-cover rounded"
-              />
-            ) : (
-              <div className="w-12 h-8 bg-gray-200 flex items-center justify-center rounded text-xs text-gray-500">
-                N/A
-              </div>
-            )}
-            <span>{row.carModel}</span>
-          </div>
-        );
-      },
-    },
-  ];
-
   // Table setup
   const table = useReactTable({
     data: customerData,
-    columns,
+    columns: scheduleColumns,
     state: { pagination },
     onPaginationChange: setPagination,
     getCoreRowModel: getCoreRowModel(),
@@ -96,7 +48,6 @@ export default function CustomerSchedulePage() {
       <div className="page-content">
         <title>My Schedule</title>
 
-        {/* Header + Search */}
         <div className="flex justify-between items-center mb-4">
           <h1 className="font-pathway text-2xl header-req">
             <HiCalendar className="inline-block mr-2 -mt-1" />
@@ -114,8 +65,7 @@ export default function CustomerSchedulePage() {
           </div>
         </div>
 
-        {/* Table */}
-        <div className="p-4 overflow-x-auto">
+        <div className="schedule-table p-4 overflow-x-auto">
           <table className="min-w-full border border-gray-300 rounded-lg overflow-hidden">
             <thead className="bg-gray-100">
               {table.getHeaderGroups().map((hg) => (
@@ -149,7 +99,6 @@ export default function CustomerSchedulePage() {
             </tbody>
           </table>
 
-          {/* ✅ Pagination controls (same as MyBookings & History) */}
           <div className="mt-2 flex gap-2 pagination justify-center items-center">
             <button onClick={() => table.previousPage()} disabled={!table.getCanPreviousPage()}>
               ← Prev

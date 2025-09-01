@@ -10,7 +10,7 @@
   box-shadow: 0px 0px 3px #000;
   margin-top: 5px;
 }
-/* Base tab button */
+
 .user-type-btn {
   font-family: 'Pathway Gothic One', sans-serif;
   font-size: 24px;
@@ -23,12 +23,10 @@
   overflow: hidden;
 }
 
-/* Hover effect */
 .user-type-btn:hover {
   background-color: #13d817;
 }
 
-/* Active tab */
 .user-type-btn.active {
   background-color: #e53935;
   color: white;
@@ -83,4 +81,18 @@
 
 .extension:hover {
   background-color: #13d817;
+}
+
+.booking-history-car-image {
+  width: 40px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.booking-history-table {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
