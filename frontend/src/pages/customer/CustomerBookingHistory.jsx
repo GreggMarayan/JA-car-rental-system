@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import CustomerSideBar from '../../components/CustomerSideBar';
 import CustomerHeader from '../../components/CustomerHeader';
+import '../../styles/customercss/customer-body.css';
 import { useScheduleStore } from '../../store/schedule.js';
 import { HiMagnifyingGlass, HiOutlineClipboardDocumentCheck } from 'react-icons/hi2';
 import {

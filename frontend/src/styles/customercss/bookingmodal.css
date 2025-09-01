@@ -6,9 +6,9 @@
 .btn-container {
   display: flex;
   justify-content: flex-start;
-  gap: 50px;
+  gap: 100px;
   margin-top: 20px;
-  margin-left: 100px;
+  margin-left: 50px;
 }
 
 /* Base button style */
@@ -42,7 +42,7 @@
 }
 
 .btn-secondary:hover {
-  background-color: #bbb;
+  background-color: #13d817;
 }
 
 /* ===========================

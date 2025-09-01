@@ -132,7 +132,7 @@
 .edit-btn {
   padding: 5px 12px;
   font-size: 14px;
-  background-color: #4a4a4a;
+  background-color: #e53935;
   color: white;
   border: none;
   border-radius: 20px;
@@ -211,5 +211,5 @@
 }
 
 .btn-no:hover {
-  background-color: #bbb;
+  background-color: #13d817;
 }

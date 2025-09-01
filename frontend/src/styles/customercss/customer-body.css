@@ -1,0 +1,86 @@
+.page-content table {
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 24px;
+  border-collapse: collapse;
+  height: calc(40vh - 16vh);
+  width: calc(40vw - 17vw);
+  overflow: auto;
+  padding: 5px;
+  background: #f8f8f8;
+  box-shadow: 0px 0px 3px #000;
+  margin-top: 5px;
+}
+/* Base tab button */
+.user-type-btn {
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 24px;
+  padding: 0px 10px;
+  border: none;
+  background-color: #d9d9d9;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover effect */
+.user-type-btn:hover {
+  background-color: #13d817;
+}
+
+/* Active tab */
+.user-type-btn.active {
+  background-color: #e53935;
+  color: white;
+  font-weight: bold;
+  cursor: default;
+}
+
+.my-bookings {
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.Pay-Now {
+  background-color: #e53935;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.edit {
+  background-color: #e53935;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.cancel {
+  background-color: #e53935;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.extension {
+  background-color: #e53935;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.Pay-Now:hover {
+  background-color: #13d817;
+}
+
+.edit:hover {
+  background-color: #13d817;
+}
+
+.cancel:hover {
+  background-color: #13d817;
+}
+
+.extension:hover {
+  background-color: #13d817;
+}
