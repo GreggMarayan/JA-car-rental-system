@@ -1,1 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+
 @import "tailwindcss";
+
+@layer base {
+  html {
+    font-family: "Merriweather", serif;
+  }
+}
+
+body,
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  max-width: 1280px;
+  width: "auto";
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+@media (max-width: 1024px) {
+  #root {
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+  }
+}

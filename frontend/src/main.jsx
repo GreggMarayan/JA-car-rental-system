@@ -9,7 +9,7 @@ import './index.css'
 const router = createBrowserRouter([
   {path: "/", element: <App />},
   {path: "/admin", element: <AdminDashboard />},
-  {path: "/booking", element: <AdminBooking />}
+  {path: "/manage-booking", element: <AdminBooking />}
 ])
 
 createRoot(document.getElementById('root')).render(
