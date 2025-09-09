@@ -1,37 +1,35 @@
-import "./styles/index.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import { useState } from 'react'
-
-import LoginPage from "./pages/LoginPage";
-import HomePage from "./pages/HomePage";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import AdminBookingPage from "./pages/admin/AdminBookingPage";
-import AdminCarPage from "./pages/admin/AdminCarPage";
-import AdminManageUser from "./pages/admin/AdminManageUser";
-import AdminSchedulePage from "./pages/admin/AdminSchedulePage";
-import AdminTransactionPage from "./pages/admin/AdminTransactionPage";
-import AdminReportAnalytics from "./pages/admin/AdminReportAnalytics";
-import AdminSettings from "./pages/admin/AdminSettings";
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
+import './App.css'
 
 function App() {
+  const [count, setCount] = useState(0)
+
   return (
-    <div className="h-[100vh] w-[98.9vw]">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<AdminDashboard />} />
-          <Route path="/manage-booking" element={<AdminBookingPage />} />
-          <Route path="/manage-car" element={<AdminCarPage />} />
-          <Route path="/manage-user" element={<AdminManageUser />} />
-          <Route path="/schedule" element={<AdminSchedulePage />} />
-          <Route path="/transaction-logs" element={<AdminTransactionPage />} />
-          <Route path="/report-analytics" element={<AdminReportAnalytics />} />
-          <Route path="/settings" element={<AdminSettings />} />
-          <Route path="/home" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
+    <>
+      <div>
+        <a href="https://vite.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
+    </>
+  )
 }
 
-export default App;
+export default App
