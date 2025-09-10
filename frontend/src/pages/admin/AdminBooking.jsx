@@ -1,7 +1,6 @@
-import AdminSideBar from '../../ui/components/AdminSideBar'
-import { Box, CssBaseline, useMediaQuery } from '@mui/material'
-import MobileAppBar from '../../ui/components/MobileAppBar'
-
+import AdminSideBar from "../../ui/components/AdminSideBar";
+import { Box, CssBaseline, useMediaQuery } from "@mui/material";
+import MobileAppBar from "../../ui/components/MobileAppBar";
 
 import { Button, Typography } from "@mui/material";
 // import { AddIcon } from "@mui/icons-material/Add";
@@ -9,20 +8,18 @@ import { useEffect, useState } from "react";
 import ManageUserHeader from "../../ui/components/header/ManageUserHeader";
 import ManageUserTable from "../../ui/components/table/ManageUserTable";
 
-
 function AdminBooking() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
 
-  const isMobile = useMediaQuery('(max-width: 1024px)');
+  const isMobile = useMediaQuery("(max-width: 1024px)");
 
   const [rows, setRows] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState("CUSTOMER");
-
 
   useEffect(() => {
     setLoading(true);
@@ -79,14 +76,12 @@ function AdminBooking() {
   }
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
 
       {isMobile && (
-        <MobileAppBar
-          title="Dashboard"
-          onMenuClick={handleDrawerToggle}
-        />)}
+        <MobileAppBar title="Dashboard" onMenuClick={handleDrawerToggle} />
+      )}
 
       <AdminSideBar
         mobileOpen={mobileOpen}
@@ -98,11 +93,15 @@ function AdminBooking() {
         sx={{
           flexGrow: 1,
           p: 3,
-          width: { sm: `calc(100% - 16rem)` },
-          ml: { sm: '16rem' },
-          mt: { xs: '56px', sm: 0 } // Match AppBar height on mobile
-        }}>
-
+          width: `calc(100% - 16rem)`,
+          ml: { sm: "16rem" },
+          // mt: { xs: "56px", sm: 0 }, // Match AppBar height on mobile
+          height: { xs: "calc(100vh - 56px)", sm: "100vh" },
+          overflow: "hidden",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
         {/* {                                     ADD COMPONENTS HERE                                       } */}
 
         <Box
@@ -119,7 +118,7 @@ function AdminBooking() {
             boxSizing: "border-box",
           }}
         >
-          <title>Practice Table</title>
+          <title>Table</title>
           <ManageUserHeader activeTab={activeTab} onTabChange={setActiveTab} />
           <Box
             sx={{
@@ -179,15 +178,16 @@ function AdminBooking() {
                 </Button>
               ) : null}
             </Box>
-            <ManageUserTable activeTab={activeTab} rows={rows} loading={loading} />
+            <ManageUserTable
+              activeTab={activeTab}
+              rows={rows}
+              loading={loading}
+            />
           </Box>
         </Box>
       </Box>
     </Box>
-  )
+  );
 }
 
 export default AdminBooking;
-
-
-
