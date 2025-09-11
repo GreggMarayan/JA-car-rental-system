@@ -1,0 +1,44 @@
+/* ===========================
+   Modal
+   =========================== */
+
+.modals {
+  background: #fff;
+  max-height: 90vh; /* keeps modal at original size */
+  overflow-y: auto; /* allow scrolling if content is long */
+  padding: 20px;
+  border-radius: 8px;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 20px;
+}
+
+.btn-link {
+  color: black;
+  background-color: #e53935;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 20px;
+}
+
+.btn-link:hover {
+  color: black;
+  background-color: #13d817;
+}
+
+.modals-field {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.modals-field label {
+  width: 150px; /* fixed width for all labels */
+  font-weight: bold;
+}
+
+.modals-field input,
+.modals-field select {
+  flex: 1;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}

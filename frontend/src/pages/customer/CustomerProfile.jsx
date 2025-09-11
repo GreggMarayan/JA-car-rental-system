@@ -1,7 +1,7 @@
 import React from 'react';
 import CustomerHeader from '../../components/CustomerHeader';
 import CustomerSideBar from '../../components/CustomerSideBar';
-import { HiOutlineUserCircle } from 'react-icons/hi';
+import { HiOutlineUserCircle } from 'react-icons/hi2'; // ✅ use hi2 for consistency
 import '../../styles/customercss/customerprofile.css';
 
 export default function CustomerProfile() {
@@ -10,12 +10,15 @@ export default function CustomerProfile() {
       <CustomerHeader />
       <CustomerSideBar />
 
-      <div className="page-content">
+      <div className="page-contentt">
         <title>My Profile</title>
-        <h1 className="profile-title">
+
+        {/* Header */}
+        <div className="profile-header">
           <HiOutlineUserCircle className="profile-icon" />
-          My Profile
-        </h1>
+          <h1 className="profile-title">My Profile</h1>
+        </div>
+
         <div className="customer-profile-page">
           <div className="profile-container">
             {/* Left: Profile + License */}

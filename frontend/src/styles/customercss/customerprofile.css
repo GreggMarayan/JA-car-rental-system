@@ -14,12 +14,13 @@
 
 .profile-container {
   display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 80%;
+  padding: 40px;
   background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(36, 36, 36, 0.15);
-  width: 80%;
-  padding: 60px;
-  gap: 30px;
 }
 
 .left-section {
@@ -40,7 +41,7 @@
 }
 
 .license-card-pill {
-  background: #b7b6b6;
+  background: #fefdfd;
   padding: 10px 30px;
   border-radius: 40px;
   text-align: left;
@@ -61,7 +62,7 @@
 
 /* Modern card style */
 .modern-card {
-  background: #b7b6b6;
+  background: #fefdfd;
   padding: 10px 30px;
   border-radius: 0px;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
@@ -126,4 +127,37 @@
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.profile-title {
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.profile-icon {
+  font-size: 2rem;
+  color: #090909; /* match your other headers */
+}
+
+.page-contentt {
+  margin-top: 70px; /* push below header */
+  margin-left: 220px; /* push right of sidebar */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.customer-profile-page,
+.page-contentt,
+body,
+html {
+  overflow: hidden; /* prevent scrolling */
+  height: 100%; /* ensure full height */
 }

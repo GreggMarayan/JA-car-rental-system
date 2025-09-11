@@ -11,7 +11,6 @@ function CustomerHeader() {
     width: '100vw',
     height: '70px',
     backgroundColor: 'black',
-    zIndex: 10,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between', // logo left, user right

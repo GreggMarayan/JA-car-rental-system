@@ -21,6 +21,7 @@
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+  border-radius: 4px;
 }
 
 .user-type-btn:hover {
@@ -111,4 +112,38 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
+}
+
+.page-content table thead th {
+  border: 1px solid #070707;
+}
+
+/* Body rows: only horizontal lines, no vertical borders */
+.page-content table tbody td {
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: 1px solid #0a0a0a; /* horizontal line */
+}
+
+.schedule-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem; /* remove extra space below header */
+  gap: 0.5rem; /* optional: small gap between title and searchbar */
+}
+
+.schedule-header input {
+  margin: 0; /* ensure input has no extra margin */
+}
+
+.p-4 {
+  padding-top: 0.5rem; /* reduce top padding above table */
+}
+
+h1,
+h1 span {
+  margin: 0;
+  line-height: 1; /* makes text vertically centered with icon */
 }

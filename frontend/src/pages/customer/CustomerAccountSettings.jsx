@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import CustomerSideBar from '../../components/CustomerSideBar';
 import CustomerHeader from '../../components/CustomerHeader';
+import { HiOutlineCog6Tooth } from 'react-icons/hi2'; // ⚙️ Settings Icon
 import '../../styles/customercss/customeraccountsettings.css';
 
 export default function AccountSettings() {
@@ -45,7 +46,6 @@ export default function AccountSettings() {
     setActiveTab(tab);
   };
 
-  // Show confirmation modal before saving
   const handleEditInfo = () => {
     if (isEditingInfo) {
       setPendingSave('info');
@@ -87,18 +87,24 @@ export default function AccountSettings() {
       <div className="page-content">
         <title>Account Settings</title>
 
+        {/* ✅ Page Header */}
+        <div className="account-header">
+          <HiOutlineCog6Tooth className="account-icon" />
+          <h1 className="account-title">Account Settings</h1>
+        </div>
+
         <div className="account-page">
           {/* Tabs */}
           <div className="tabs">
             <button
               className={activeTab === 'info' ? 'tab active' : 'tab'}
-              onClick={() => setActiveTab('info')}
+              onClick={() => handleTabChange('info')}
             >
               INFORMATION
             </button>
             <button
               className={activeTab === 'license' ? 'tab active' : 'tab'}
-              onClick={() => setActiveTab('license')}
+              onClick={() => handleTabChange('license')}
             >
               LICENSE
             </button>

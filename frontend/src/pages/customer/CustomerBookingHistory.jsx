@@ -2,6 +2,8 @@
 import React, { useMemo, useState } from 'react';
 import CustomerSideBar from '../../components/CustomerSideBar';
 import CustomerHeader from '../../components/CustomerHeader';
+import SearchBar from '../../components/SearchBar'; // ✅ shared component
+import { HiOutlineClipboardDocumentCheck } from 'react-icons/hi2';
 import { useBookingHistoryStore } from '../../customerstore/bookingHistoryStore';
 import { bookingHistoryColumns } from '../customeraccessor/bookingHistoryColumns';
 import {
@@ -16,8 +18,9 @@ export default function CustomerBookingHistory() {
   const [searchTerm, setSearchTerm] = useState('');
   const [pagination, setPagination] = useState({ pageIndex: 0, pageSize: 5 });
 
-  const customerId = 1; // replace with logged-in customer ID
+  const customerId = 1; // Replace with logged-in customer ID
 
+  // Filter data
   const filteredData = useMemo(() => {
     const term = searchTerm.toLowerCase();
     return allBookings.filter(
@@ -29,6 +32,7 @@ export default function CustomerBookingHistory() {
     );
   }, [allBookings, customerId, searchTerm]);
 
+  // Table setup
   const table = useReactTable({
     data: filteredData,
     columns: bookingHistoryColumns,
@@ -48,16 +52,15 @@ export default function CustomerBookingHistory() {
 
         {/* Header + Search */}
         <div className="flex justify-between items-center mb-4">
-          <h1 className="font-pathway text-2xl header-req">Booking History</h1>
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search by car, type, or status..."
-              className="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
+          <h1 className="font-pathway text-2xl header-req flex items-center gap-2">
+            <HiOutlineClipboardDocumentCheck />
+            Booking History
+          </h1>
+          <SearchBar
+            value={searchTerm}
+            onChange={setSearchTerm}
+            placeholder="Search by car, type, or status..."
+          />
         </div>
 
         {/* Table */}

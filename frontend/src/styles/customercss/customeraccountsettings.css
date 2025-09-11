@@ -218,3 +218,21 @@
 .btn-no:hover {
   background-color: #13d817;
 }
+
+.account-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  font-family: 'Pathway Gothic One', sans-serif;
+}
+
+.account-title {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.account-icon {
+  font-size: 2rem;
+  color: #050505; /* red highlight for consistency */
+}

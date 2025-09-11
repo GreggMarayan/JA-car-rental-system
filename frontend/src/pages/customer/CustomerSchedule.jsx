@@ -2,16 +2,17 @@
 import React, { useMemo, useState } from 'react';
 import CustomerSideBar from '../../components/CustomerSideBar';
 import CustomerHeader from '../../components/CustomerHeader';
+import SearchBar from '../../components/SearchBar'; // ✅ new reusable search
 import { useScheduleStore } from '../../customerstore/scheduleStore';
 import { scheduleColumns } from '../customeraccessor/scheduleColumns';
-import { HiCalendar, HiMagnifyingGlass } from 'react-icons/hi2';
+import { HiCalendar } from 'react-icons/hi2';
 import {
   useReactTable,
   getCoreRowModel,
   getPaginationRowModel,
   flexRender,
 } from '@tanstack/react-table';
-import '../../styles/customercss/customerschedule.css'; // Add your CSS here
+import '../../styles/customercss/customerschedule.css';
 
 export default function CustomerSchedulePage() {
   const allData = useScheduleStore((state) => state.reservations);
@@ -49,20 +50,15 @@ export default function CustomerSchedulePage() {
         <title>My Schedule</title>
 
         <div className="flex justify-between items-center mb-4">
-          <h1 className="font-pathway text-2xl header-req">
-            <HiCalendar className="inline-block mr-2 -mt-1" />
+          <h1 className="font-pathway text-2xl header-req flex items-center gap-2">
+            <HiCalendar />
             My Schedule
           </h1>
-          <div className="relative">
-            <input
-              type="text"
-              placeholder="Search by car or location..."
-              className="pl-10 pr-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <HiMagnifyingGlass className="absolute left-3 top-3 text-gray-400" />
-          </div>
+          <SearchBar
+            value={searchTerm}
+            onChange={setSearchTerm}
+            placeholder="Search by car or location..."
+          />
         </div>
 
         <div className="schedule-table p-4 overflow-x-auto">
