@@ -5,7 +5,7 @@ import BookingModal from '../../components/BookingModal';
 import '../../styles/customercss/customercars.css';
 import '../../styles/customercss/bookingmodal.css';
 
-const allCars = [
+export const allCars = [
   {
     id: 1,
     name: 'Nissan Terra 2019',
@@ -113,11 +113,11 @@ export default function CustomerCars() {
                 <img src={car.img} alt={car.name} className="car-image" />
                 <div className="car-info">
                   <h3>{car.name}</h3>
-                  <p>Type: {car.type}</p>
-                  <p>Transmission: {car.transmission}</p>
-                  <p>Seats: {car.seats}</p>
-                  <p>Engine: {car.engine}</p>
-                  <p>Rates: ₱{car.price}/Day</p>
+                  <p>Type : {car.type}</p>
+                  <p>Transmission : {car.transmission}</p>
+                  <p>Seats : {car.seats}</p>
+                  <p>Engine : {car.engine}</p>
+                  <p>Rates : ₱{car.price}/Day</p>
                   <p
                     className={`availability-label ${isAvailable ? 'available' : isUnderMaintenance ? 'under-maintenance' : 'not-available'}`}
                   >

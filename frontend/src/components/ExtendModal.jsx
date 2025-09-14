@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../styles/customercss/customermybookings.css';
 
 export default function ExtendModal({ show, booking, onClose, onConfirm }) {
   const [extensionDate, setExtensionDate] = useState('');
@@ -17,22 +16,22 @@ export default function ExtendModal({ show, booking, onClose, onConfirm }) {
         <h2>Extension Request</h2>
         <form onSubmit={handleSubmit}>
           <div className="field-row">
-            <label>Car Model:</label>
-            <p>{booking.carModel}</p>
+            <label className="field-labels">Car Model :</label>
+            <p1>{booking.carModel}</p1>
           </div>
 
           <div className="field-row">
-            <label>Start Date:</label>
-            <p>{booking.startDate}</p>
+            <label className="field-labels">Start Date :</label>
+            <p1>{booking.startDate}</p1>
           </div>
 
           <div className="field-row">
-            <label>End Date:</label>
-            <p>{booking.endDate}</p>
+            <label className="field-labels">End Date :</label>
+            <p1>{booking.endDate}</p1>
           </div>
 
           <div className="field-row">
-            <label>Extension Date:</label>
+            <label className="field-labels">Extension Date :</label>
             <input
               type="date"
               value={extensionDate}
@@ -41,7 +40,7 @@ export default function ExtendModal({ show, booking, onClose, onConfirm }) {
             />
           </div>
 
-          <div className="btn-container">
+          <div className="btn-container1">
             <button type="submit" className="btn btn-primary">
               Request
             </button>

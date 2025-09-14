@@ -81,7 +81,7 @@ export default function BookingModal({ show, car, onClose, onSubmit }) {
     const days = calculateDays(formData.startDate, formData.endDate);
     const rental = days * car.price;
     const driverFee = formData.selfDrive === 'No' ? days * driverFeePerDay : 0;
-    const total = rental + reservationFee + driverFee;
+    const total = rental - reservationFee + driverFee;
 
     const bookingData = {
       ...formData,
@@ -134,12 +134,12 @@ export default function BookingModal({ show, car, onClose, onSubmit }) {
           </button>
         </div>
 
-        <h1 style={{ margin: '0 0 5px 0' }}>Book {car.name}</h1>
+        <h2 style={{ margin: '0 0 5px 0' }}>Book {car.name}</h2>
 
         {!showConfirmation ? (
           <form onSubmit={handleSubmit}>
             <div className="field-row">
-              <label className="field-label">Purpose</label>
+              <label className="field-label">Purpose :</label>
               <input
                 name="purpose"
                 value={formData.purpose}
@@ -150,7 +150,7 @@ export default function BookingModal({ show, car, onClose, onSubmit }) {
             </div>
 
             <div className="field-row">
-              <label className="field-label">Start Date</label>
+              <label className="field-label">Start Date :</label>
               <input
                 type="date"
                 name="startDate"
@@ -161,7 +161,7 @@ export default function BookingModal({ show, car, onClose, onSubmit }) {
             </div>
 
             <div className="field-row">
-              <label className="field-label">Start Time</label>
+              <label className="field-label">Start Time :</label>
               <input
                 type="time"
                 name="startTime"
@@ -172,7 +172,7 @@ export default function BookingModal({ show, car, onClose, onSubmit }) {
             </div>
 
             <div className="field-row">
-              <label className="field-label">End Date</label>
+              <label className="field-label">End Date :</label>
               <input
                 type="date"
                 name="endDate"
@@ -183,7 +183,7 @@ export default function BookingModal({ show, car, onClose, onSubmit }) {
             </div>
 
             <div className="field-row">
-              <label className="field-label">End Time</label>
+              <label className="field-label">End Time :</label>
               <input
                 type="time"
                 name="endTime"
@@ -195,7 +195,7 @@ export default function BookingModal({ show, car, onClose, onSubmit }) {
 
             {tab === 'deliver' && (
               <div className="field-row">
-                <label className="field-label">Delivery Location</label>
+                <label className="field-label">Delivery Location :</label>
                 <input
                   name="deliveryLocation"
                   value={formData.deliveryLocation}
@@ -208,7 +208,7 @@ export default function BookingModal({ show, car, onClose, onSubmit }) {
 
             {tab === 'pickup' && (
               <div className="field-row">
-                <label className="field-label">Pickup Location</label>
+                <label className="field-label">Pickup Location :</label>
                 <input
                   name="dropOffLocation"
                   value={formData.dropOffLocation}
@@ -220,7 +220,7 @@ export default function BookingModal({ show, car, onClose, onSubmit }) {
             )}
 
             <div className="field-row">
-              <label className="field-label">Self-drive</label>
+              <label className="field-label">Self-drive :</label>
               <select
                 name="selfDrive"
                 value={formData.selfDrive}
@@ -234,7 +234,7 @@ export default function BookingModal({ show, car, onClose, onSubmit }) {
 
             {formData.selfDrive === 'No' && (
               <div className="field-row">
-                <label className="field-label">Select Driver</label>
+                <label className="field-label">Select Driver </label>
                 <select
                   name="selectedDriver"
                   value={formData.selectedDriver}
@@ -252,7 +252,7 @@ export default function BookingModal({ show, car, onClose, onSubmit }) {
             )}
 
             <div className="field-row">
-              <label className="field-label">Phone Number</label>
+              <label className="field-label">Phone Number :</label>
               <input
                 type="tel"
                 name="phone"
@@ -264,7 +264,7 @@ export default function BookingModal({ show, car, onClose, onSubmit }) {
             </div>
 
             <div className="field-row">
-              <label className="field-label">Facebook Link</label>
+              <label className="field-label">Facebook Link :</label>
               <input
                 name="fbLink"
                 value={formData.fbLink}
@@ -286,43 +286,43 @@ export default function BookingModal({ show, car, onClose, onSubmit }) {
           <div>
             <h2>Confirm Booking</h2>
             <p>
-              <strong>Car:</strong> {car.name}
+              <strong>Car :</strong> {car.name}
             </p>
             <p>
-              <strong>Type:</strong> {car.type}
+              <strong>Type :</strong> {car.type}
             </p>
             <p>
-              <strong>Seats:</strong> {car.seats}
+              <strong>Seats :</strong> {car.seats}
             </p>
             <p>
-              <strong>Engine:</strong> {car.engine}
+              <strong>Engine :</strong> {car.engine}
             </p>
             <p>
-              <strong>Rate:</strong> ₱{car.price}/Day
+              <strong>Rate :</strong> ₱{car.price}/Day
             </p>
 
             <p>
-              <strong>Purpose:</strong> {formData.purpose}
+              <strong>Purpose :</strong> {formData.purpose}
             </p>
             <p>
-              <strong>Start:</strong> {formData.startDate} {formData.startTime}
+              <strong>Start :</strong> {formData.startDate} {formData.startTime}
             </p>
             <p>
-              <strong>End:</strong> {formData.endDate} {formData.endTime}
+              <strong>End :</strong> {formData.endDate} {formData.endTime}
             </p>
             <p>
               <strong>{tab === 'deliver' ? 'Delivery' : 'Pickup'} Location:</strong>{' '}
               {formData[tab === 'deliver' ? 'deliveryLocation' : 'dropOffLocation']}
             </p>
             <p>
-              <strong>Self-Drive:</strong> {formData.selfDrive}
+              <strong>Self-Drive :</strong> {formData.selfDrive}
             </p>
 
             {/* Driver section with More Details toggle */}
             {formData.selfDrive === 'No' && (
               <div>
                 <p>
-                  <strong>Driver:</strong> {formData.selectedDriver}
+                  <strong>Driver :</strong> {formData.selectedDriver}
                 </p>
                 {formData.selectedDriver && (
                   <div>
@@ -337,19 +337,19 @@ export default function BookingModal({ show, car, onClose, onSubmit }) {
                     {showDriverDetails && selectedDriverObj && (
                       <div className="driver-details">
                         <p>
-                          <strong>Name:</strong> {selectedDriverObj.name}
+                          <strong>Name :</strong> {selectedDriverObj.name}
                         </p>
                         <p>
-                          <strong>Age:</strong> {selectedDriverObj.age}
+                          <strong>Age :</strong> {selectedDriverObj.age}
                         </p>
                         <p>
-                          <strong>Experience:</strong> {selectedDriverObj.experience}
+                          <strong>Experience :</strong> {selectedDriverObj.experience}
                         </p>
                         <p>
-                          <strong>License:</strong> {selectedDriverObj.license}
+                          <strong>License :</strong> {selectedDriverObj.license}
                         </p>
                         <p>
-                          <strong>Phone:</strong> {selectedDriverObj.phone}
+                          <strong>Phone :</strong> {selectedDriverObj.phone}
                         </p>
                       </div>
                     )}
@@ -359,10 +359,10 @@ export default function BookingModal({ show, car, onClose, onSubmit }) {
             )}
 
             <p>
-              <strong>Phone:</strong> {formData.phone}
+              <strong>Phone :</strong> {formData.phone}
             </p>
             <p>
-              <strong>Facebook Profile:</strong> {formData.fbLink}
+              <strong>Facebook Profile :</strong> {formData.fbLink}
             </p>
 
             <hr />
@@ -376,24 +376,24 @@ export default function BookingModal({ show, car, onClose, onSubmit }) {
               return (
                 <>
                   <p>
-                    <strong>Rental Days:</strong> {days} day(s)
+                    <strong>Rental Days :</strong> {days} day(s)
                   </p>
                   <p>
-                    <strong>Car Rate:</strong> ₱{car.price} / day
+                    <strong>Car Rate :</strong> ₱{car.price} / day
                   </p>
                   <p>
-                    <strong>Rental Amount:</strong> ₱{rental}
+                    <strong>Rental Amount :</strong> ₱{rental}
                   </p>
                   <p>
-                    <strong>Reservation Fee:</strong> ₱{reservationFee}
+                    <strong>Reservation Fee :</strong> ₱{reservationFee}
                   </p>
                   {driverFee > 0 && (
                     <p>
-                      <strong>Driver Fee:</strong> ₱{driverFee}
+                      <strong>Driver Fee :</strong> ₱{driverFee}
                     </p>
                   )}
                   <p>
-                    <strong>Total:</strong> ₱{total}
+                    <strong>Total :</strong> ₱{total}
                   </p>
                 </>
               );

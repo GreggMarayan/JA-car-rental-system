@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import CustomerSideBar from '../../components/CustomerSideBar';
 import CustomerHeader from '../../components/CustomerHeader';
-import { HiOutlineCog6Tooth } from 'react-icons/hi2'; // ⚙️ Settings Icon
+import { HiOutlineCog6Tooth } from 'react-icons/hi2';
 import '../../styles/customercss/customeraccountsettings.css';
 
 export default function AccountSettings() {
@@ -10,6 +10,9 @@ export default function AccountSettings() {
   const [isEditingLicense, setIsEditingLicense] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [pendingSave, setPendingSave] = useState(null);
+
+  // enlarge license image
+  const [showImageModal, setShowImageModal] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: 'Jude Christian',
@@ -87,7 +90,6 @@ export default function AccountSettings() {
       <div className="page-content">
         <title>Account Settings</title>
 
-        {/* ✅ Page Header */}
         <div className="account-header">
           <HiOutlineCog6Tooth className="account-icon" />
           <h1 className="account-title">Account Settings</h1>
@@ -284,7 +286,13 @@ export default function AccountSettings() {
                 </div>
 
                 <div className="license-image">
-                  <img src={formData.licenseImage} alt="Driver License" className="license-img" />
+                  <img
+                    src={formData.licenseImage}
+                    alt="Driver License"
+                    className="license-img"
+                    onClick={() => setShowImageModal(true)}
+                    style={{ cursor: 'pointer' }}
+                  />
                   {isEditingLicense && (
                     <input
                       type="file"
@@ -313,6 +321,21 @@ export default function AccountSettings() {
                 No
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Image Modal */}
+      {showImageModal && (
+        <div className="image-modal-overlay" onClick={() => setShowImageModal(false)}>
+          <div
+            className="image-modal-content"
+            onClick={(e) => e.stopPropagation()} // prevent closing when clicking inside
+          >
+            <button className="close-btn" onClick={() => setShowImageModal(false)}>
+              ✖
+            </button>
+            <img src={formData.licenseImage} alt="License Full" />
           </div>
         </div>
       )}

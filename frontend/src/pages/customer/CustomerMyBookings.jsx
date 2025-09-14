@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import CustomerSideBar from '../../components/CustomerSideBar';
 import CustomerHeader from '../../components/CustomerHeader';
 import '../../styles/customercss/customermybookings.css';
+import { allCars } from '../customer/CustomerCars';
 import { HiBookOpen, HiCreditCard } from 'react-icons/hi2';
 import {
   useReactTable,
@@ -23,6 +24,7 @@ import ExtendModal from '../../components/ExtendModal';
 import CancelModal from '../../components/CancelModal';
 import EditModal from '../../components/EditModal';
 import PayNowModal from '../../components/PayNowModal';
+import GcashModal from '../../components/GcashModal';
 import SearchBar from '../../components/SearchBar';
 
 export default function CustomerMyBookings() {
@@ -38,6 +40,8 @@ export default function CustomerMyBookings() {
   const [showCancelModal, setShowCancelModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [showGcashModal, setShowGcashModal] = useState(false);
+
   const [selectedBooking, setSelectedBooking] = useState(null);
   const [selectedPayment, setSelectedPayment] = useState(null);
 
@@ -59,6 +63,12 @@ export default function CustomerMyBookings() {
     setShowPaymentModal(true);
   };
 
+  // When GCash is chosen inside PayNowModal
+  const handleGcashOpen = () => {
+    setShowPaymentModal(false); // close PayNowModal
+    setShowGcashModal(true); // open GcashModal
+  };
+
   // Modal confirm handlers
   const handleExtendConfirm = (updatedBooking) => {
     console.log('Extend requested:', updatedBooking);
@@ -78,6 +88,11 @@ export default function CustomerMyBookings() {
   const handlePaymentConfirm = (paymentData) => {
     console.log('Payment confirmed:', paymentData);
     setShowPaymentModal(false);
+    setSelectedPayment(null);
+  };
+  const handleGcashSubmit = (paymentData) => {
+    console.log('GCash Payment submitted:', paymentData);
+    setShowGcashModal(false);
     setSelectedPayment(null);
   };
 
@@ -365,7 +380,7 @@ export default function CustomerMyBookings() {
         <EditModal
           show={showEditModal}
           booking={selectedBooking}
-          cars={[]} // pass your cars list if needed
+          cars={allCars} // ✅ now cars are passed
           onClose={() => setShowEditModal(false)}
           onConfirm={handleEditConfirm}
         />
@@ -374,6 +389,13 @@ export default function CustomerMyBookings() {
           settlement={selectedPayment}
           onClose={() => setShowPaymentModal(false)}
           onConfirm={handlePaymentConfirm}
+          onGcash={handleGcashOpen} // NEW
+        />
+        <GcashModal
+          show={showGcashModal}
+          settlement={selectedPayment}
+          onClose={() => setShowGcashModal(false)}
+          onSubmit={handleGcashSubmit}
         />
       </div>
     </>

@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import '../styles/customercss/customermybookings.css';
 
 export default function EditModal({ show, booking, cars, onClose, onConfirm }) {
   const [formData, setFormData] = useState({
@@ -30,7 +29,7 @@ export default function EditModal({ show, booking, cars, onClose, onConfirm }) {
         <h2>Edit Booking</h2>
         <form onSubmit={handleSubmit}>
           <div className="field-row">
-            <label>Start Date:</label>
+            <label className="field-labels">Start Date :</label>
             <input
               type="date"
               name="startDate"
@@ -40,7 +39,7 @@ export default function EditModal({ show, booking, cars, onClose, onConfirm }) {
             />
           </div>
           <div className="field-row">
-            <label>Pick-Up Time:</label>
+            <label className="field-labels">Pick-Up Time :</label>
             <input
               type="time"
               name="pickupTime"
@@ -50,7 +49,7 @@ export default function EditModal({ show, booking, cars, onClose, onConfirm }) {
             />
           </div>
           <div className="field-row">
-            <label>Pick-Up Location:</label>
+            <label className="field-labels">Pick-Up Location :</label>
             <input
               type="text"
               name="pickupLocation"
@@ -60,7 +59,7 @@ export default function EditModal({ show, booking, cars, onClose, onConfirm }) {
             />
           </div>
           <div className="field-row">
-            <label>End Date:</label>
+            <label className="field-labels">End Date :</label>
             <input
               type="date"
               name="endDate"
@@ -70,7 +69,7 @@ export default function EditModal({ show, booking, cars, onClose, onConfirm }) {
             />
           </div>
           <div className="field-row">
-            <label>Drop-Off Time:</label>
+            <label className="field-labels">Drop-Off Time :</label>
             <input
               type="time"
               name="dropoffTime"
@@ -80,7 +79,7 @@ export default function EditModal({ show, booking, cars, onClose, onConfirm }) {
             />
           </div>
           <div className="field-row">
-            <label>Drop-Off Location:</label>
+            <label className="field-labels">Drop-Off Location :</label>
             <input
               type="text"
               name="dropoffLocation"
@@ -90,17 +89,20 @@ export default function EditModal({ show, booking, cars, onClose, onConfirm }) {
             />
           </div>
           <div className="field-row">
-            <label>Car Model:</label>
+            <label className="field-labels">Car Model :</label>
             <select name="carModel" value={formData.carModel} onChange={handleChange} required>
-              {cars.map((car) => (
-                <option key={car.id} value={car.name}>
-                  {car.name}
-                </option>
-              ))}
+              <option value="">-- Select a Car --</option>
+              {cars
+                .filter((car) => car.availability === 'Available') // only show available cars
+                .map((car) => (
+                  <option key={car.id} value={car.name}>
+                    {car.name}
+                  </option>
+                ))}
             </select>
           </div>
 
-          <div className="btn-container">
+          <div className="btn-container1">
             <button type="submit" className="btn btn-primary">
               Confirm
             </button>

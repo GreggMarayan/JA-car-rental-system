@@ -97,9 +97,13 @@
   padding: 20px;
   border-radius: 8px;
   font-family: 'Pathway Gothic One', sans-serif;
-  font-size: 20px;
 }
 
+.field-label {
+  width: 150px;
+  font-size: 24px;
+  font-weight: bold;
+}
 /* ===========================
    Driver Details
    =========================== */
@@ -147,8 +151,4 @@
 .btn-link:hover {
   color: black;
   background-color: #13d817;
-}
-
-.driver-details {
-  font-family: 'Pathway Gothic One', sans-serif;
 }

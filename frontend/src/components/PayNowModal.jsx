@@ -1,33 +1,61 @@
-import React from 'react';
-import '../styles/customercss/customermybookings.css';
+import React, { useState } from 'react';
+import GcashModal from './GcashModal';
 
 export default function PayNowModal({ show, settlement, onClose, onConfirm }) {
+  const [showGcash, setShowGcash] = useState(false);
+
   if (!show || !settlement) return null;
 
+  const handlePayNow = () => {
+    // Close PayNowModal and open GcashModal
+    setShowGcash(true);
+  };
+
+  const handleGcashClose = () => {
+    setShowGcash(false);
+    onClose(); // Close the PayNowModal fully after GCash closes
+  };
+
   return (
-    <div className="modal-overlay" onClick={onClose}>
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <h2>Payment</h2>
+    <>
+      {!showGcash && (
+        <div className="modal-overlay" onClick={onClose}>
+          <div className="modals" onClick={(e) => e.stopPropagation()}>
+            <h2>Payment</h2>
 
-        <div className="field-row">
-          <label>Description:</label>
-          <p>{settlement.description}</p>
-        </div>
+            <div className="field-row">
+              <label className="field-labels">Description :</label>
+              <p3>{settlement.description}</p3>
+            </div>
 
-        <div className="field-row">
-          <label>Amount:</label>
-          <p>₱{settlement.amount}</p>
-        </div>
+            <div className="field-row">
+              <label className="field-labels">Amount :</label>
+              <p3>₱{settlement.amount}</p3>
+            </div>
 
-        <div className="btn-container">
-          <button className="btn btn-primary" onClick={() => onConfirm(settlement)}>
-            Pay Now
-          </button>
-          <button className="btn btn-secondary" onClick={onClose}>
-            Cancel
-          </button>
+            <div className="btn-container2">
+              <button className="btn btn-primary" onClick={handlePayNow}>
+                Pay Now
+              </button>
+              <button className="btn btn-secondary" onClick={onClose}>
+                Cancel
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+
+      {/* Gcash Modal */}
+      <GcashModal
+        show={showGcash}
+        onClose={handleGcashClose}
+        settlement={settlement}
+        onSubmit={(data) => {
+          console.log('GCash Payment Data:', data);
+          onConfirm({ ...settlement, ...data });
+          handleGcashClose();
+        }}
+      />
+    </>
   );
 }

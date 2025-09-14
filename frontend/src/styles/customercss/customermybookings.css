@@ -24,21 +24,78 @@
   background-color: #13d817;
 }
 
-.modals-field {
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.modals-field label {
-  width: 150px; /* fixed width for all labels */
+.field-labels {
   font-weight: bold;
+  width: 150px;
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-.modals-field input,
-.modals-field select {
-  flex: 1;
-  padding: 6px 10px;
-  border-radius: 6px;
+input,
+select {
+  padding: 5px;
+  font-size: 18px;
+  border-radius: 2px;
   border: 1px solid #ccc;
+  width: 52%;
+  color: #515151;
+  font-family: 'Pathway Gothic One', sans-serif;
+}
+
+h2 {
+  color: #515151;
+  text-align: center;
+}
+
+p1 {
+  font-size: 25px;
+  font-weight: bold;
+  width: 55%;
+  font-family: 'Pathway Gothic One', sans-serif;
+  color: #515151;
+}
+
+p2 {
+  font-size: 30px;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+  font-family: 'Pathway Gothic One', sans-serif;
+}
+
+.btn-container1 {
+  display: flex;
+  gap: 80px;
+  margin-top: 30px;
+  margin-left: 20px;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 24px;
+}
+
+p3 {
+  font-size: 25px;
+  font-weight: bold;
+  width: 100%;
+  text-align: left;
+  font-family: 'Pathway Gothic One', sans-serif;
+  color: #515151;
+  margin-top: -7px;
+}
+
+.btn-container2 {
+  display: flex;
+  gap: 60px;
+  margin-top: 30px;
+  margin-left: 100px;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 24px;
+}
+
+.btn-container3 {
+  display: flex;
+  gap: 70px;
+  margin-top: 30px;
+  margin-left: 30px;
+  font-family: 'Pathway Gothic One', sans-serif;
+  font-size: 24px;
 }

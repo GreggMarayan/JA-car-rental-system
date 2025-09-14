@@ -1,5 +1,4 @@
 import React from 'react';
-import '../styles/customercss/customermybookings.css';
 
 export default function CancelModal({ show, booking, onClose, onConfirm }) {
   if (!show || !booking) return null;
@@ -9,10 +8,12 @@ export default function CancelModal({ show, booking, onClose, onConfirm }) {
       <div className="modals" onClick={(e) => e.stopPropagation()}>
         <h2>Request for Cancellation</h2>
         <div className="field-row">
-          <p>Are you sure you want to cancel this booking?</p>
+          <p2>
+            Are you sure you want <br /> to cancel this booking?
+          </p2>
         </div>
 
-        <div className="btn-container">
+        <div className="btn-container1">
           <button className="btn btn-primary" onClick={() => onConfirm(booking.id)}>
             Yes
           </button>
