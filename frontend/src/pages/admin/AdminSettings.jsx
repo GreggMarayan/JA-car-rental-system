@@ -1,23 +1,24 @@
-import AdminSideBar from "../../components/AdminSideBar";
-import Header from "../../components/Header";
+import AdminSideBar from '../../ui/components/AdminSideBar';
+import Header from '../../ui/components/Header';
+import '../../styles/admincss/admin-body.css';
+import { HiCog8Tooth } from 'react-icons/hi2';
+import React from 'react';
 
 export default function AdminSettings() {
+  const [mobileOpen, setMobileOpen] = React.useState(false);
   return (
     <>
-      <Header />
-      <AdminSideBar />
-      <div
-        style={{
-          marginTop: "70px",
-          marginLeft: "20vw",
-          height: "calc(100vh - 70px)",
-          overflowY: "auto",
-          padding: "20px",
-        }}
-      >
+      <Header onMenuClick={() => setMobileOpen(true)} />
+      <AdminSideBar
+        mobileOpen={mobileOpen}
+        onClose={() => setMobileOpen(false)}
+      />
+      <div className="page-container">
         <title>Settings</title>
-
-        <h1 style={{ textAlign: "center" }}>Settings</h1>
+        <h1 className="font-pathway text-2xl header-req">
+          <HiCog8Tooth style={{ verticalAlign: '-3px', marginRight: '5px' }} />
+          SETTINGS
+        </h1>
       </div>
     </>
   );
