@@ -25,12 +25,13 @@ export default function AdminManageUser() {
 
   const openAddDriverModal = () => setShowAddDriverModal(true);
   const closeAddDriverModal = () => setShowAddDriverModal(false);
+  const API_URL = process.env.API_URL;
 
   const fetchData = async () => {
     setLoading(true);
     try {
       const response = await fetch(
-        'http://localhost:3001/customers'
+        `${API_URL}/customers`
       );
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
