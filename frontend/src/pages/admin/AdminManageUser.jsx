@@ -25,14 +25,31 @@ export default function AdminManageUser() {
 
   const openAddDriverModal = () => setShowAddDriverModal(true);
   const closeAddDriverModal = () => setShowAddDriverModal(false);
-  const API_URL = process.env.API_URL;
+  // Vite: env vars must be prefixed with VITE_
+  let API_URL = '';
+  try {
+    API_URL = (import.meta.env && import.meta.env.VITE_API_URL) || '';
+  } catch (e) {
+    API_URL = '';
+  }
+  // Debug: log what was injected (safe)
+  if (typeof window !== 'undefined' && !API_URL) {
+    // eslint-disable-next-line no-console
+    console.warn('VITE_API_URL not found. import.meta.env =', (() => {
+      try { return import.meta.env; } catch (e) { return undefined; }
+    })());
+  }
 
   const fetchData = async () => {
     setLoading(true);
     try {
-      const response = await fetch(
-        `${API_URL}/customers`
-      );
+      if (!API_URL) {
+        // don't throw — set error and exit so the rest of the app can render for debugging
+        setError('VITE_API_URL is not defined. Ensure VITE_API_URL exists in .env and restart Vite.');
+        setLoading(false);
+        return;
+      }
+      const response = await fetch(`${API_URL}/customers`);
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
